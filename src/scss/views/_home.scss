@@ -1,0 +1,19 @@
+div.img-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  div.modal {
+    position: absolute;
+    bottom: 0px;
+    width: 430px;
+    height: 285px;
+    padding: 40px 20px;
+    background-color: $light-blue;
+  }
+}
+
+img.home {
+  height: 100vh;
+}

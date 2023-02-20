@@ -1,6 +1,4 @@
-<template>
-  <img style="width: 100px" src="~assets/logo.jpg" alt="" />
-</template>
+<template></template>
 
 <script>
 export default {};

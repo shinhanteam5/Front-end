@@ -1,27 +1,16 @@
 <template>
-  <h1>{{ message }}</h1>
+  <!-- <h1>{{ message }}</h1>
   <h2 @click="increase">{{ count }}</h2>
-  <HelloWorld />
+  <HelloWorld /> -->
+  <RouterView />
 </template>
 
 <script>
-import HelloWorld from '~/components/HelloWorld';
 export default {
-  components: {
-    HelloWorld,
-  },
-  data() {
-    return {
-      message: 'Hello Vue!',
-      count: 0,
-    };
-  },
+  components: {},
+  data() {},
 
-  methods: {
-    increase() {
-      this.count += 1;
-    },
-  },
+  methods: {},
 };
 </script>
 
