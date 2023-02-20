@@ -3,6 +3,7 @@ import Home from '../views/Home';
 import Frac from '../views/Frac';
 import Tendency from '../views/Tendency';
 import Search from '../views/Search';
+import StockList from '../views/StockList';
 
 const routes = [
   {
@@ -21,10 +22,10 @@ const routes = [
     path: '/frac/search',
     component: Search,
   },
-  //   {
-  //     path: '/frac/list',
-  //     component: '',
-  //   },
+  {
+    path: '/frac/Stocklist',
+    component: StockList,
+  },
   //   {
   //     path: '/frac/detail',
   //     component: '',

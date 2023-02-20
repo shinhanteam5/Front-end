@@ -1,0 +1,30 @@
+div#filter-bar {
+  position: fixed;
+  width: 384px;
+  bottom: 56px;
+  padding: 22px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 17px;
+  border-top-right-radius: 17px;
+  color: white;
+  background-color: $purple;
+  div {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    svg {
+      width: 25px;
+      margin-right: 7px;
+    }
+  }
+  #select-link {
+    text-decoration: none;
+    text-decoration-line: none;
+    color: lightgrey;
+    font-size: 14px;
+    text-decoration-line: underline;
+  }
+}
