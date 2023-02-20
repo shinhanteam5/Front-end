@@ -1,0 +1,116 @@
+.selection-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-align: center;
+    line-height: 1.3;
+    // width: 190px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: $noto-sans;
+    margin-bottom: 10px;
+    span {
+      font-weight: 700;
+    }
+  }
+  section.tendency-wrapper {
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0px 5px 5px lightgray;
+    margin: 7px 9px;
+    padding: 15px 10px;
+    display: flex;
+    background-color: $light-purple;
+    div.tendency-col1 {
+      margin-left: -7px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-size: 19px;
+        font-family: $noto-sans;
+        font-weight: 600;
+        margin-bottom: 20px;
+        margin-top: 5px;
+      }
+      div.img-wrapper {
+        width: 120px;
+        height: 110px;
+        img {
+          &#seal-character {
+            width: 110px;
+            height: 95%;
+          }
+          height: 100%;
+        }
+      }
+    }
+    div.tendency-col2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      div.col2-row1 {
+        display: flex;
+        justify-content: space-between;
+        div {
+          &.category {
+            display: flex;
+            p {
+              margin-right: 5px;
+              font-family: $noto-sans;
+              font-size: 12px;
+              font-weight: 500;
+              padding: 6px 12px;
+              padding-top: 9px;
+              border-radius: 13px;
+              &#first {
+                background-color: $light-red;
+              }
+              &#second {
+                background-color: $light-orange;
+              }
+              &#third {
+                background-color: $light-green;
+              }
+              &#fourth {
+                background-color: $light-lime;
+              }
+              &#fifth {
+                background-color: $green;
+              }
+              &#sixth {
+                background-color: $green-2;
+              }
+            }
+          }
+          svg {
+            width: 30px;
+          }
+        }
+      }
+      div.col2-row2.contents {
+        padding: 17px;
+        line-height: 1.3;
+        border-radius: 13px;
+        background-color: white;
+        font-family: $noto-sans;
+        font-size: 15px;
+        font-weight: 500;
+        span {
+          &#red {
+            color: $thick-red;
+          }
+          &#orange {
+            color: $thick-orange;
+          }
+          &#purple {
+            color: $thick-purple;
+          }
+        }
+      }
+    }
+  }
+}
