@@ -5,12 +5,16 @@
     <!-- 모달 창 -->
     <div class="modal">
       <div class="modal-contents">
-        <div class="">
+        <div class="contents-col1">
           <p>주식 투자를</p>
           <p>소액으로 간편하게!</p>
-          <button>소수점 투자하러 가기</button>
+          <div>
+            <router-link to="/frac" id="frac-link"
+              >소수점 투자하러 가기</router-link
+            >
+          </div>
         </div>
-        <div>
+        <div class="contents-col2">
           <img
             class="character"
             src="../assets/characters/character1.png"
@@ -31,6 +35,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
+@import '../scss/main.scss';
 @import '../scss/views/_home.scss';
 </style>

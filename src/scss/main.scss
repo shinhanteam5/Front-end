@@ -1,11 +1,5 @@
-$color--blue: royalblue;
-$color--white: white;
+// font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
-body {
-  background-color: $color--blue;
-  h1 {
-    color: $color--white;
-    font-size: 40px;
-    display: flex; // PostCSS 설정
-  }
-}
+@import './reset.scss';
+@import './_variables.scss';

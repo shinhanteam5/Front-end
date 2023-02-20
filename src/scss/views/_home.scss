@@ -1,3 +1,14 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 div.img-wrapper {
   width: 100vw;
   height: 100vh;
@@ -7,10 +18,62 @@ div.img-wrapper {
   div.modal {
     position: absolute;
     bottom: 0px;
-    width: 430px;
-    height: 285px;
-    padding: 40px 20px;
+    width: 427px;
+    height: 265px;
     background-color: $light-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    animation: fadeIn 0.5s ease-in-out;
+    div.modal-contents {
+      padding: 0px 18px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div.contents-col1 {
+        p {
+          font-size: 21px;
+          font-family: $noto-sans;
+          padding: 4px;
+          font-weight: 600;
+        }
+        div {
+          //margin: 15px 0px;
+          padding-top: 32px;
+          #frac-link {
+            padding: 10px 20px;
+            border-radius: 18px;
+            background-color: white;
+            font-family: $noto-sans;
+            text-decoration-line: none;
+            color: black;
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+      }
+      div.contents-col2 {
+        img.character {
+          width: 180px;
+        }
+      }
+    }
+    div.modal-bottom {
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      button {
+        border: none;
+        background: none;
+        font-family: $noto-sans;
+        padding: 12px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    }
   }
 }
 
