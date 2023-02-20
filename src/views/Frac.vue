@@ -41,6 +41,7 @@
     <div class="modal-wrapper">
       <div id="close">
         <svg
+          @click="closeModal()"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -81,7 +82,19 @@ export default {
   },
 
   methods: {
-    openModal() {},
+    openModal() {
+      const modal = document.querySelector('.modal-wrapper');
+      const background = document.querySelector('.background');
+      modal.classList.add('show');
+      background.classList.add('be-darker');
+    },
+
+    closeModal() {
+      const modal = document.querySelector('.modal-wrapper');
+      const background = document.querySelector('.background');
+      modal.classList.remove('show');
+      background.classList.remove('be-darker');
+    },
   },
 };
 </script>
