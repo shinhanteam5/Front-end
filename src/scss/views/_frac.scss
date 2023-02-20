@@ -69,5 +69,56 @@ div.img-wrapper {
   }
   // 모달
   .modal-wrapper {
+    position: fixed;
+    top: 35%;
+    right: 38%;
+    background-color: $light-purple;
+    width: 360px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    #close {
+      position: fixed;
+      top: 35%;
+      right: 38%;
+      svg {
+        width: 22px;
+        margin: 6px;
+      }
+    }
+    div.modal-row1 {
+      margin-top: 13px;
+      font-family: $noto-sans;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    div.modal-row2 {
+      img {
+        margin: 10px -15px;
+        width: 120px;
+        &.small {
+          width: 100px;
+        }
+      }
+    }
+    div.modal-row3 {
+      padding-top: 15px;
+      .link-btn {
+        padding: 10px 24px;
+        text-decoration-line: none;
+        color: black;
+        background-color: white;
+        border-radius: 12px;
+        font-family: $noto-sans;
+        font-weight: 600;
+        &#first {
+          color: white;
+          background-color: $purple;
+          margin-right: 8px;
+        }
+      }
+    }
   }
 }

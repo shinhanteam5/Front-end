@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../views/Home';
 import Frac from '../views/Frac';
+import Tendency from '../views/Tendency';
+import Search from '../views/Search';
 
 const routes = [
   {
@@ -11,10 +13,14 @@ const routes = [
     path: '/frac',
     component: Frac,
   },
-  //   {
-  //     path: '/frac/select',
-  //     component: '',
-  //   },
+  {
+    path: '/frac/select',
+    component: Tendency,
+  },
+  {
+    path: '/frac/search',
+    component: Search,
+  },
   //   {
   //     path: '/frac/list',
   //     component: '',
