@@ -1,0 +1,73 @@
+div.img-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  div.background {
+    div#bottom-bar {
+      position: fixed;
+      width: 424px;
+      bottom: 0px;
+      img {
+        width: 100%;
+      }
+    }
+    width: 424px;
+    height: 100%;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    img.character {
+      width: 100%;
+    }
+    button#btn1-to-invest {
+      cursor: pointer;
+      position: absolute;
+      top: 8.6%;
+      right: 26%;
+      font-family: $noto-sans;
+      border: none;
+      font-size: 12px;
+      background-color: $blue;
+      padding: 8px 15px;
+      border-radius: 6px;
+      color: white;
+    }
+    div.btn-wrapper {
+      border-top: 1px solid lightgrey;
+      padding: 20px 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: $noto-sans;
+      img.character {
+        width: 160px;
+      }
+      img.qna,
+      img.recommend {
+        width: 100%;
+      }
+      p {
+        margin: 2px 0px;
+      }
+      button#btn2-to-invest {
+        cursor: pointer;
+        margin: 20px 0px;
+        padding: 10px 35px;
+        border: none;
+        background-color: $blue;
+        color: white;
+        font-family: $noto-sans;
+        font-size: 17px;
+        font-weight: 600;
+        border-radius: 10px;
+      }
+    }
+  }
+  // 모달
+  .modal-wrapper {
+  }
+}

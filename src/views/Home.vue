@@ -1,6 +1,6 @@
 <template>
   <div class="img-wrapper">
-    <img class="home" src="../assets/home.png" alt="" />
+    <img class="home" src="../assets/pages/home.png" alt="" />
 
     <!-- 모달 창 -->
     <div class="modal">
