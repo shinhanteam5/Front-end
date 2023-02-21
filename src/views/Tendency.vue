@@ -8,6 +8,7 @@
       <div class="selection-wrapper">
         <h1>희망하는 <span>투자 성향</span>을 선택하세요</h1>
         <router-link
+          id="router-link"
           :to="{
             name: 'StockList',
             query: {
@@ -54,6 +55,7 @@
           </section>
         </router-link>
         <router-link
+          id="router-link"
           :to="{
             name: 'StockList',
             query: {
@@ -99,6 +101,7 @@
           </section>
         </router-link>
         <router-link
+          id="router-link"
           :to="{
             name: 'StockList',
             query: {
