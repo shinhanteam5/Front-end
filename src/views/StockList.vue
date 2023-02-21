@@ -1,6 +1,6 @@
 <template>
   <div class="img-wrapper">
-    <div class="background">
+    <div class="background" id="stockList-background">
       <div id="filter-bar">
         <div>
           <svg
@@ -27,22 +27,77 @@
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
       <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <!-- 리스트 기준 -->
+      <section class="category">
+        <ul>
+          <li class="active">상승</li>
+          <li>하락</li>
+          <li>인기검색</li>
+          <li>높은가격</li>
+          <li>낮은가격</li>
+        </ul>
+      </section>
+      <!-- 종목 리스트 -->
+      <section class="list">
+        <!-- 종목 카테고리 -->
+        <ul class="stock-category">
+          <li>종목명</li>
+          <li>현재가</li>
+          <li>등락률</li>
+          <li>거래량</li>
+        </ul>
+        <!-- 종목들 -->
+        <ul class="stock-list">
+          <li v-for="stock in stockList">
+            <div>{{ stock.itmsNm }}</div>
+            <div class="red">{{ stock.mkp }}</div>
+            <div class="red">{{ stock.fltRt + '%' }}</div>
+            <div>{{ stock.trqu }}</div>
+          </li>
+        </ul>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
+const priceToString = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 export default {
   data() {
-    return {};
+    return {
+      stockList: [],
+    };
   },
 
   methods: {},
+
+  created() {
+    axios
+      .get(
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=30&resultType=json'
+      )
+      .then((response) => {
+        const stockList = response.data.response.body.items.item;
+        stockList.forEach((stock) => {
+          this.stockList.push({
+            itmsNm: stock.itmsNm,
+            mkp: priceToString(stock.mkp),
+            fltRt: stock.fltRt,
+            trqu: priceToString(stock.trqu),
+          });
+        });
+      });
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import '../scss/main.scss';
 @import '../scss/views/_frac.scss';
-@import '../scss/views/_list.scss';
+@import '../scss/views/_stockList.scss';
 </style>
