@@ -4,6 +4,7 @@ import Frac from '../views/Frac';
 import Tendency from '../views/Tendency';
 import Search from '../views/Search';
 import StockList from '../views/StockList';
+import StockDetail from '../views/StockDetail';
 import StockBuy from '../views/StockBuy';
 
 const routes = [
@@ -34,6 +35,10 @@ const routes = [
   {
     path: '/frac/buy',
     component: StockBuy,
+  },
+  {
+    path: '/frac/stockdetail',
+    component: StockDetail,
   },
 ];
 
