@@ -48,6 +48,7 @@
         </ul>
         <!-- 종목들 -->
         <ul class="stock-list">
+          <router-link></router-link>
           <li v-for="stock in stockList">
             <div>{{ stock.itmsNm }}</div>
             <div class="red">{{ stock.mkp }}</div>
