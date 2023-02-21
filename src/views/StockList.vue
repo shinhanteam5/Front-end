@@ -106,6 +106,8 @@ export default {
   },
 
   created() {
+    const tendency = this.$route.query.filter;
+
     axios
       .get(
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=30&resultType=json'
@@ -113,6 +115,11 @@ export default {
       .then((response) => {
         const stockList = response.data.response.body.items.item;
         stockList.forEach((stock) => {
+          console.log(stock);
+          if (tendency == 1) {
+          } else if (tendency == 2) {
+          } else {
+          }
           this.stockList.push({
             srtnCd: stock.srtnCd,
             itmsNm: stock.itmsNm,

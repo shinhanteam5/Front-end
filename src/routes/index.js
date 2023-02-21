@@ -27,6 +27,8 @@ const routes = [
   {
     path: '/frac/stockList',
     component: StockList,
+    name: 'StockList',
+    props: true,
   },
   //   {
   //     path: '/frac/detail',
