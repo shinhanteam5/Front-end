@@ -1,21 +1,22 @@
+
+
 div.img-wrapper {
-    height: auto;
+
     div#stockList-background {
-      // height: auto;
+      background-color: white;
     }
   }
-  
   div#stockList-background > div:nth-child(3){
     position: absolute;
-    width: 37px;
+    width: 80px;
     height: 14px;
     left: 52px;
-    top: 82px;
+    top: 95px;
     
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 15px;
     line-height: 14px;
     display: flex;
     align-items: center;
@@ -29,12 +30,12 @@ div.img-wrapper {
     width: 79px;
     height: 36px;
     left: 52px;
-    top: 89px;
+    top: 120px;
 
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 500;
-    font-size: 25px;
+    font-size: 35px;
     line-height: 36px;
     display: flex;
     align-items: center;
@@ -43,17 +44,52 @@ div.img-wrapper {
 
   }
 
-  div #stockList-background > div.chart{
+  div #stockList-background > div.chartbutton{
     position: absolute;
-    width: 194px;
-    height: 25px;
-    left: 60px;
-    top: 246px;
-    button{
-        background-color: yellow;
+    width: 400px;
+    height: 48px;
+    left: 0px;
+    top: 174px;
+    text-align: center;
+    li{
+      font-family: 'Noto Sans KR';
+      font-size: 15px;
+      margin: 30px;
+      a{
+        color: black;
+      }
+    }
+    img{
+      width: 424px;
+      height: 200px;
+      
     }
     
 
   }
 
-  
+div#stockList-background > div:nth-child(5){
+    position: absolute;
+    width: 424px;
+    height: 48px;
+    left: 50px;
+    top: 160px;
+    font-size: 10px;
+    font-family: 'Noto Sans KR';
+    color: red;
+
+  }
+
+  div#stockList-background > div.chartbutton > ul > li.on{
+    width: 40px;
+    height: 30px;
+    background: #2E66E1;
+    padding-top: 10px;
+    border-radius: 12px;
+    a{color: white;}
+  }
+
+  .chartbutton > .tab {text-align:center; font-size:16px; font-family: 'Noto Sans KR'}
+  .chartbutton > .tab > li {display:inline-block; margin:0 20px;}
+
+  .chartbutton > .tab > li.on a{color: white;}
