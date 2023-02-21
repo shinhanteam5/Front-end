@@ -74,17 +74,22 @@ section.list {
     }
   }
   ul.stock-list {
-    li {
-      cursor: pointer;
-      padding: 18px 0px;
-      text-align: center;
-      display: grid;
-      font-size: 14px;
-      font-family: $noto-sans;
-      grid-template-columns: 120px 100px 100px 100px;
-      div {
-        &.red {
-          color: $thick-red;
+    #router-link {
+      text-decoration: none;
+      text-decoration-line: none;
+      color: black;
+      li {
+        cursor: pointer;
+        padding: 18px 0px;
+        text-align: center;
+        display: grid;
+        font-size: 14px;
+        font-family: $noto-sans;
+        grid-template-columns: 120px 100px 100px 100px;
+        div {
+          &.red {
+            color: $thick-red;
+          }
         }
       }
     }

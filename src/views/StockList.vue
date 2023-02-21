@@ -48,12 +48,24 @@
         </ul>
         <!-- 종목들 -->
         <ul class="stock-list">
-          <li v-for="(stock, index) in stockList" @click="getDetail(index)">
-            <div>{{ stock.itmsNm }}</div>
-            <div class="red">{{ stock.mkp }}</div>
-            <div class="red">{{ stock.fltRt + '%' }}</div>
-            <div>{{ stock.trqu }}</div>
-          </li>
+          <router-link
+            id="router-link"
+            :to="{
+              name: 'StockDetail',
+              query: {
+                stock_code: stock.srtnCd,
+              },
+            }"
+            v-for="(stock, index) in stockList"
+            @click="getDetail(index)"
+          >
+            <li>
+              <div>{{ stock.itmsNm }}</div>
+              <div class="red">{{ stock.mkp }}</div>
+              <div class="red">{{ stock.fltRt + '%' }}</div>
+              <div>{{ stock.trqu }}</div>
+            </li>
+          </router-link>
         </ul>
       </section>
     </div>
@@ -76,28 +88,18 @@ export default {
 
   methods: {
     getDetail(index) {
-      console.log(this.stockList[index].clpr);
-      console.log(this.stockList[index].vs);
-      console.log(this.stockList[index].fltRt);
-      console.log(this.stockList[index].itmsNm);
-      const stock_code = this.stockList[index].srtnCd;
+      const stock_code = String(this.stockList[index].srtnCd);
+
+      const frm = new FormData();
+      frm.append('clpr', Number(this.stockList[index].clpr));
+      frm.append('vs', Number(this.stockList[index].vs));
+      frm.append('fltRt', Number(this.stockList[index].fltRt));
+      frm.append('itmsNm', this.stockList[index].itmsNm);
+
       axios
-        .post(
-          `http://127.0.0.1:8000/api/stocklist/submit/${stock_code}`,
-          JSON.stringify({
-            clpr: Number(this.stockList[index].clpr),
-            vs: Number(this.stockList[index].vs),
-            fltRt: Number(this.stockList[index].fltRt),
-            itmsNm: this.stockList[index].itmsNm,
-          }),
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
+        .post(`http://127.0.0.1:8000/api/stocklist/submit/${stock_code}`, frm)
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
         })
         .catch((error) => console.log(error));
     },

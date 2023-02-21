@@ -14,23 +14,23 @@
             <img src="../assets/steakers/cookie.png" />
             과자만큼 투자하기
           </p>
-          <p v-else-if="inputMoney >= 3000 && inputMoney <= 6000">
+          <p v-else-if="inputMoney >= 3000 && inputMoney <= 5000">
             <img src="../assets/steakers/coffee.png" />
             커피만큼 투자하기
           </p>
-          <p v-else-if="inputMoney > 6000 && inputMoney <= 15000">
+          <p v-else-if="inputMoney > 5000 && inputMoney <= 14000">
             <img src="../assets/steakers/food.png" />
             점심만큼 투자하기
           </p>
-          <p v-else-if="inputMoney > 5000 && inputMoney <= 25000">
+          <p v-else-if="inputMoney > 14000 && inputMoney <= 25000">
             <img src="../assets/steakers/chicken.png" />
             치킨만큼 투자하기
           </p>
-          <p v-else-if="inputMoney > 25000 && inputMoney <= 35000">
+          <p v-else-if="inputMoney > 25000 && inputMoney <= 50000">
             <img src="../assets/steakers/pizza.png" />
             피자만큼 투자하기
           </p>
-          <p v-else-if="inputMoney > 35000 && inputMoney <= 100000">
+          <p v-else-if="inputMoney > 50000 && inputMoney <= 100000">
             <img src="../assets/steakers/ktx.png" />
             KTX만큼 투자하기
           </p>
@@ -197,7 +197,6 @@ export default {
   created() {
     this.shownBalance = priceToString(this.balance) + '원';
     console.log(this.$route.query);
-
   },
 };
 </script>
