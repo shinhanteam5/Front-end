@@ -5,21 +5,21 @@
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
       <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
-      <!-- 리스트 기준 -->
-
-      <!-- 종목 리스트 -->
-      <div class="main">
+      <div class="stock-name">
         {{ detail[0].name }}
       </div>
-      <div>
+      <div class="stock-current-price">
         {{ detail[0].current_price }}
       </div>
-      <div>+ {{ detail[0].earn }} ({{ detail[0].earn_rate }}%) 오늘</div>
+      <div class="stock-earn">
+        <span v-if="detail[0].earn > 0">+</span>
+        {{ detail[0].earn }} ({{ detail[0].earn_rate }}%) 오늘
+      </div>
 
-      <div class="chartbutton">
+      <div class="chart-button">
         <img :src="imgurl" />
-        <ul class="tab" ref="tab" @click.prevent="setContext">
-          <li class="on"><a>1주</a></li>
+        <ul class="chart-tab" ref="tab" @click.prevent="setContext">
+          <li class="active"><a>1주</a></li>
           <li><a>한달</a></li>
           <li><a>1년</a></li>
           <li><a>3년</a></li>
@@ -84,17 +84,17 @@ export default {
       this.chartContext = ev.target.textContent;
       this.setCrrTab(ev.target.parentNode); // li가 들어감.
     },
+
     setCrrTab(crr) {
       this.$refs.tab.querySelectorAll('li').forEach((item) => {
-        item.classList.remove('on');
+        item.classList.remove('active');
       });
       this.$refs.tab.querySelectorAll('a').forEach((item) => {
         if (item.textContent === crr.textContent) {
-          var img = this.imageMatch[crr.textContent];
+          const img = this.imageMatch[crr.textContent];
           this.imgurl = this.detail[0][img];
-          console.log();
           // this.imgurl=this.detail[0].this.imageMatch[crr.textContent]
-          item.parentNode.classList.add('on');
+          item.parentNode.classList.add('active');
         }
       });
     },
@@ -106,6 +106,7 @@ export default {
     axios
       .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}`)
       .then((response) => {
+        console.log(response.data);
         this.detail = response.data;
         this.imgurl = response.data[0].week;
       });
