@@ -9,7 +9,47 @@
       <div class="form-wrapper">
         <form action="">
           <input v-model="shownMoney" placeholder="구매금액입력" />
-          <p>{{ message }}</p>
+          <p v-if="inputMoney === 0">천원 단위로 구매 가능합니다.</p>
+          <p v-else-if="inputMoney > 0 && inputMoney < 3000">
+            <img src="../assets/steakers/cookie.png" />
+            과자만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney >= 3000 && inputMoney <= 6000">
+            <img src="../assets/steakers/coffee.png" />
+            커피만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 6000 && inputMoney <= 15000">
+            <img src="../assets/steakers/food.png" />
+            점심만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 5000 && inputMoney <= 25000">
+            <img src="../assets/steakers/chicken.png" />
+            치킨만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 25000 && inputMoney <= 35000">
+            <img src="../assets/steakers/pizza.png" />
+            피자만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 35000 && inputMoney <= 100000">
+            <img src="../assets/steakers/ktx.png" />
+            KTX만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 100000 && inputMoney <= 300000">
+            <img src="../assets/steakers/earphone.png" />
+            무선 이어폰만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 300000 && inputMoney <= 500000">
+            <img src="../assets/steakers/smartwatch.png" />
+            스마트 워치만큼 투자하기
+          </p>
+          <p v-else-if="inputMoney > 500000 && inputMoney <= 700000">
+            <img src="../assets/steakers/allowance.png" />
+            한 달 용돈만큼 투자하기
+          </p>
+          <p v-else>
+            <img src="../assets/steakers/travel.png" />
+            여행 경비만큼 투자하기
+          </p>
         </form>
         <!-- 예상... -->
         <div class="info">
@@ -19,11 +59,11 @@
           </div>
           <div>
             <p class="grey">예상 수수료</p>
-            <p>{{ charge }}</p>
+            <p>{{ shownCharge }}</p>
           </div>
           <div>
             <p class="grey">예상 주식수</p>
-            <p>{{ shareNumber }}</p>
+            <p>{{ shownShareNumber }}</p>
           </div>
         </div>
         <!-- 버튼 4개 -->
@@ -86,39 +126,57 @@ const priceToString = (price) => {
 export default {
   data() {
     return {
-      message: '천원 단위로 구매 가능합니다.',
+      currentValue: 0, // 현재가
       inputMoney: 0,
       shownMoney: '',
       balance: 1000000, // 잔액
       shownBalance: '',
-      charge: '-', // 수수료
-      shareNumber: '-', // 주식수
+      charge: 0, // 수수료
+      shownCharge: '-',
+      shareNumber: 0, // 주식수
+      shownShareNumber: '-',
     };
   },
 
   methods: {
+    updateCharge() {
+      this.charge = this.inputMoney * 0.01;
+      this.shownCharge = String(this.charge) + '원';
+    },
+
+    updateShareNumber() {
+      this.shareNumber = this.inputMoney / currentValue;
+      this.shownShareNumber = String(this.shareNumber) + '주';
+    },
+
+    showInputMoney() {
+      this.shownMoney = priceToString(this.inputMoney) + '원';
+    },
+
+    updateBalance() {
+      this.balance = 1000000 - this.inputMoney;
+      this.shownBalance = priceToString(this.balance) + '원';
+    },
+
     addMoney(money) {
       this.inputMoney = this.inputMoney + money;
-      this.shownMoney = priceToString(this.inputMoney) + '원';
-
-      this.balance -= money;
-      this.shownBalance = priceToString(this.balance) + '원';
+      this.showInputMoney();
+      this.updateBalance();
+      this.updateCharge();
     },
 
     addNumber(number) {
       this.inputMoney = Number(String(this.inputMoney) + String(number));
-      this.shownMoney = priceToString(this.inputMoney) + '원';
-
-      this.balance = 1000000 - this.inputMoney;
-      this.shownBalance = priceToString(this.balance) + '원';
+      this.showInputMoney();
+      this.updateBalance();
+      this.updateCharge();
     },
 
     deleteMoney() {
       this.inputMoney = parseInt(this.inputMoney / 10);
-      this.shownMoney = priceToString(this.inputMoney) + '원';
-
-      this.balance = 1000000 - this.inputMoney;
-      this.shownBalance = priceToString(this.balance) + '원';
+      this.showInputMoney();
+      this.updateBalance();
+      this.updateCharge();
     },
 
     resetMoney() {
@@ -127,6 +185,12 @@ export default {
 
       this.balance = 1000000;
       this.shownBalance = '1,000,000원';
+
+      this.charge = 0;
+      this.shownCharge = '-';
+
+      this.shareNumber = 0;
+      this.shownShareNumber = '-';
     },
   },
 

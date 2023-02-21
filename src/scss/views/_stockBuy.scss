@@ -25,8 +25,15 @@ form {
     }
   }
   p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0.8;
     margin: 3px 0px;
+    img {
+      width: 40px;
+      margin-right: 5px;
+    }
   }
 }
 
