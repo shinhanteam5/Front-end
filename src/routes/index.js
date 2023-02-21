@@ -33,7 +33,7 @@ const routes = [
   //     component: '',
   //   },
   {
-    path: '/frac/buy',
+    path: '/frac/stockBuy',
     component: StockBuy,
   },
   {

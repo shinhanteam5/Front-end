@@ -1,0 +1,98 @@
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: $noto-sans;
+  input {
+    text-align: center;
+    border: none;
+    font-size: 32px;
+    font-family: $noto-sans;
+    &::placeholder {
+      color: black;
+      opacity: 0.8;
+      font-weight: 500;
+    }
+  }
+  p {
+    opacity: 0.8;
+    margin: 3px 0px;
+  }
+}
+
+div.info {
+  margin: 0px 60px;
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    p {
+      font-family: $noto-sans;
+      font-size: 14px;
+      &.grey {
+        color: grey;
+      }
+    }
+  }
+}
+
+div.buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+  button {
+    margin: 0px 3px;
+    font-family: $noto-sans;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 500;
+  }
+}
+
+section.numbers {
+  div.row {
+    display: flex;
+    justify-content: space-around;
+    div {
+      width: 100%;
+      text-align: center;
+      font-family: $noto-sans;
+      font-size: 22px;
+      padding: 18px;
+      &#word {
+        font-size: 18px;
+      }
+      &.delete-icon {
+        svg {
+          width: 40px;
+        }
+      }
+    }
+  }
+}
+
+button#buy-btn {
+  font-family: $noto-sans;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: $purple;
+  margin: 7px 11px;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 9px;
+}
