@@ -48,8 +48,7 @@
         </ul>
         <!-- 종목들 -->
         <ul class="stock-list">
-          <router-link></router-link>
-          <li v-for="stock in stockList">
+          <li v-for="(stock, index) in stockList" @click="getDetail(index)">
             <div>{{ stock.itmsNm }}</div>
             <div class="red">{{ stock.mkp }}</div>
             <div class="red">{{ stock.fltRt + '%' }}</div>
@@ -75,7 +74,34 @@ export default {
     };
   },
 
-  methods: {},
+  methods: {
+    getDetail(index) {
+      console.log(this.stockList[index].clpr);
+      console.log(this.stockList[index].vs);
+      console.log(this.stockList[index].fltRt);
+      console.log(this.stockList[index].itmsNm);
+      const stock_code = this.stockList[index].srtnCd;
+      axios
+        .post(
+          `http://127.0.0.1:8000/api/stocklist/submit/${stock_code}`,
+          JSON.stringify({
+            clpr: Number(this.stockList[index].clpr),
+            vs: Number(this.stockList[index].vs),
+            fltRt: Number(this.stockList[index].fltRt),
+            itmsNm: this.stockList[index].itmsNm,
+          }),
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
+    },
+  },
 
   created() {
     axios
@@ -86,10 +112,13 @@ export default {
         const stockList = response.data.response.body.items.item;
         stockList.forEach((stock) => {
           this.stockList.push({
+            srtnCd: stock.srtnCd,
             itmsNm: stock.itmsNm,
             mkp: priceToString(stock.mkp),
             fltRt: stock.fltRt,
             trqu: priceToString(stock.trqu),
+            clpr: stock.clpr,
+            vs: stock.vs,
           });
         });
       });

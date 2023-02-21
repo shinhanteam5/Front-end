@@ -25,7 +25,7 @@ const routes = [
     component: Search,
   },
   {
-    path: '/frac/Stocklist',
+    path: '/frac/stockList',
     component: StockList,
   },
   //   {
