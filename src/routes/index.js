@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory,VueRouter } from 'vue-router';
 import Home from '../views/Home';
 import Frac from '../views/Frac';
 import Tendency from '../views/Tendency';
@@ -35,6 +35,8 @@ const routes = [
   {
     path: '/frac/stockBuy',
     component: StockBuy,
+    name: 'Params',
+    props: true
   },
   {
     path: '/frac/stockdetail',

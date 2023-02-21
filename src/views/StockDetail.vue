@@ -30,6 +30,17 @@
          </ul>
         </div>
 
+        <div class="modal-row3">
+          <router-link :to="{name: 'Params', query: {name: detail[0].name,
+          user_id:1,stock_code: detail[0].stock_code
+          }}">
+        종목 추천받기</router-link
+        >
+        <router-link class="link-btn" to="/frac/search"
+          >종목 검색하기</router-link
+        >
+      </div>
+
       </div>
     </div>
   </template>
@@ -37,9 +48,6 @@
   <script>
   import axios from 'axios';
   
-  const priceToString = (price) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
   
   export default {
     data() {
@@ -58,6 +66,18 @@
     },
   
     methods: {
+      routerTest( )
+      {
+        console.log("test")
+        this.$router.push({
+          name: 'Params',
+          // params: { pathMatch: "test" },
+          query: {
+            detail: this.detail
+          },
+          // hash: this.$route.hash,
+        });
+      },
       setContext(ev){
         this.chartContext=ev.target.textContent;
         this.setCrrTab(ev.target.parentNode) ; // li가 들어감.

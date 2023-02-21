@@ -132,6 +132,8 @@ export default {
 
   created() {
     this.shownBalance = priceToString(this.balance) + '원';
+    console.log(this.$route.query);
+
   },
 };
 </script>
