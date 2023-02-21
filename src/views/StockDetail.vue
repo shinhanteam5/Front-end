@@ -33,6 +33,7 @@
 
       <div class="modal-row3">
         <router-link
+          id="buy-btn"
           :to="{
             name: 'StockBuy',
             query: {

@@ -1,131 +1,137 @@
-
-
 div.img-wrapper {
-
-    div#stockList-background {
-      background-color: white;
-    }
+  div#stockList-background {
+    background-color: white;
   }
-  div#stockList-background > div:nth-child(3){
-    position: absolute;
-    width: 80px;
-    height: 14px;
-    left: 52px;
-    top: 95px;
-    
+}
+
+div#stockList-background > div:nth-child(3) {
+  position: absolute;
+  width: 80px;
+  height: 14px;
+  left: 52px;
+  top: 95px;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+div #stockList-background > div:nth-child(4) {
+  position: absolute;
+  width: 79px;
+  height: 36px;
+  left: 52px;
+  top: 120px;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+div #stockList-background > div.chartbutton {
+  position: absolute;
+  width: 400px;
+  height: 48px;
+  left: 0px;
+  top: 174px;
+  text-align: center;
+  li {
     font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
     font-size: 15px;
-    line-height: 14px;
-    display: flex;
-    align-items: center;
-    
-    color: #000000;
+    margin: 30px;
+    a {
+      color: black;
+    }
   }
+  img {
+    width: 424px;
+    height: 200px;
+  }
+}
 
+div#stockList-background > div:nth-child(5) {
+  position: absolute;
+  width: 424px;
+  height: 48px;
+  left: 50px;
+  top: 160px;
+  font-size: 10px;
+  font-family: 'Noto Sans KR';
+  color: red;
+}
 
-  div #stockList-background > div:nth-child(4){
-    position: absolute;
-    width: 79px;
-    height: 36px;
-    left: 52px;
-    top: 120px;
+div#stockList-background > div.chartbutton > ul > li.on {
+  width: 40px;
+  height: 30px;
+  background: #2e66e1;
+  padding-top: 10px;
+  border-radius: 12px;
+  a {
+    color: white;
+  }
+}
 
+.chartbutton > .tab {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Noto Sans KR';
+}
+.chartbutton > .tab > li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.chartbutton > .tab > li.on a {
+  color: white;
+}
+
+div#stockList-background > div:nth-child(7) {
+  position: absolute;
+  width: 424px;
+  height: 48px;
+  left: 40px;
+  top: 500px;
+  font-size: 25px;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  .info {
+    margin-top: 10px;
+    width: 340px;
+    line-height: 150%;
     font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 35px;
-    line-height: 36px;
-    display: flex;
-    align-items: center;
-
-    color: #000000;
-
+    font-size: 13px;
+    font-weight: 300;
   }
+}
 
-  div #stockList-background > div.chartbutton{
-    position: absolute;
+#stockList-background > div.modal-row3 {
+  position: fixed;
+  bottom: 62px;
+  width: 424px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #buy-btn {
     width: 400px;
-    height: 48px;
-    left: 0px;
-    top: 174px;
+    padding: 11px 0px;
+    background-color: $purple;
+    color: white;
     text-align: center;
-    li{
-      font-family: 'Noto Sans KR';
-      font-size: 15px;
-      margin: 30px;
-      a{
-        color: black;
-      }
-    }
-    img{
-      width: 424px;
-      height: 200px;
-      
-    }
-    
-
-  }
-
-div#stockList-background > div:nth-child(5){
-    position: absolute;
-    width: 424px;
-    height: 48px;
-    left: 50px;
-    top: 160px;
-    font-size: 10px;
-    font-family: 'Noto Sans KR';
-    color: red;
-
-  }
-
-  div#stockList-background > div.chartbutton > ul > li.on{
-    width: 40px;
-    height: 30px;
-    background: #2E66E1;
-    padding-top: 10px;
-    border-radius: 12px;
-    a{color: white;}
-  }
-
-  .chartbutton > .tab {text-align:center; font-size:16px; font-family: 'Noto Sans KR'}
-  .chartbutton > .tab > li {display:inline-block; margin:0 20px;}
-
-  .chartbutton > .tab > li.on a{color: white;}
-
-
-  div#stockList-background > div:nth-child(7){
-    position: absolute;
-    width: 424px;
-    height: 48px;
-    left: 40px;
-    top: 500px;
-    font-size: 25px;
-    font-family: 'Noto Sans KR';
-    font-weight: 500;
-    .info{
-      margin-top: 10px;
-      width: 340px;
-      line-height:150%;
-      font-family: 'Noto Sans KR';
-      font-size: 13px;
-      font-weight: 300;
-    }
-  }
-
-  #stockList-background > div.modal-row3 {
-    position: fixed;
-    top:80%;
-    right:50%;
-    cursor: pointer;
+    text-decoration: none;
+    text-decoration-line: none;
+    border-radius: 13px;
     font-family: $noto-sans;
     font-size: 18px;
     font-weight: 600;
-    color: white;
-    background-color: $purple;
-    margin: 23px 11px;
-    padding: 13px 0px;
-    border: none;
-    border-radius: 9px;
   }
+}
