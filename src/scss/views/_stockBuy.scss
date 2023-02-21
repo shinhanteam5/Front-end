@@ -54,6 +54,7 @@ div.buttons {
   justify-content: center;
   margin: 20px 0px;
   button {
+    cursor: pointer;
     margin: 0px 3px;
     font-family: $noto-sans;
     border: none;
@@ -67,18 +68,25 @@ section.numbers {
   div.row {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     div {
+      cursor: pointer;
       width: 100%;
       text-align: center;
       font-family: $noto-sans;
       font-size: 22px;
-      padding: 18px;
+      padding: 15px;
+      margin: 3px 12px;
+      border-radius: 8px;
       &#word {
+        padding: 18px;
         font-size: 18px;
+        background-color: $light-grey;
       }
       &.delete-icon {
+        background-color: $light-grey;
         svg {
-          width: 40px;
+          width: 23px;
         }
       }
     }
@@ -86,13 +94,14 @@ section.numbers {
 }
 
 button#buy-btn {
+  cursor: pointer;
   font-family: $noto-sans;
   font-size: 18px;
   font-weight: 600;
   color: white;
   background-color: $purple;
-  margin: 7px 11px;
-  padding: 10px 0px;
+  margin: 23px 11px;
+  padding: 13px 0px;
   border: none;
   border-radius: 9px;
 }
