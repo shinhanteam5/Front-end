@@ -30,15 +30,18 @@
          </ul>
         </div>
 
+        <div>
+          회사소개
+          <div class="info">{{detail[0].info }}</div>
+        </div>
+
         <div class="modal-row3">
           <router-link :to="{name: 'Params', query: {name: detail[0].name,
           user_id:1,stock_code: detail[0].stock_code
           }}">
-        종목 추천받기</router-link
+        구매하기</router-link
         >
-        <router-link class="link-btn" to="/frac/search"
-          >종목 검색하기</router-link
-        >
+
       </div>
 
       </div>
