@@ -1,6 +1,7 @@
 div.img-wrapper {
   div#stockList-background {
     background-color: white;
+    height: 1000px;
   }
 }
 
@@ -111,4 +112,48 @@ div#stockList-background > div:nth-child(7) {
     font-size: 18px;
     font-weight: 600;
   }
+}
+//당기순이익
+div#stockList-background > div:nth-child(7) {
+  position: absolute;
+  width: 424px;
+  height: 48px;
+  left: 40px;
+  top: 500px;
+  font-size: 25px;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  .info {
+    margin-top: 10px;
+    width: 340px;
+    line-height: 150%;
+    font-family: 'Noto Sans KR';
+    font-size: 13px;
+    font-weight: 300;
+  }
+}
+//뉴스
+div#stockList-background > ul.news{
+  position: absolute;
+  width: 424px;
+  height: 48px;
+  left: 40px;
+  top: 700px;
+  font-size: 25px;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  margin-top: 20px;
+  
+
+  li{
+    
+    font-size: 13px;
+    line-height: 150%;
+    font-weight: 300;
+    p:nth-child(2){
+      font-size: 11px;
+      color: #1d232f;
+    }
+  }
+  
 }
