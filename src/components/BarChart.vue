@@ -39,8 +39,19 @@ export default {
       chartData: {
         labels: ['2019', '2020', '2021'],
         datasets: [
-          { label: '매출액', backgroundColor: '#f87979', data: [0, 0, 0] },
+          {
+            label: '매출액',
+            backgroundColor: ['#d9d9d9', '#d9d9d9', '#fcaeae'],
+            data: [0, 0, 0],
+          },
         ],
+      },
+      chartOptions: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
       },
     };
   },

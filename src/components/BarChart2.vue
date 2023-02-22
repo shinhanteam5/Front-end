@@ -38,10 +38,21 @@ export default {
     return {
       chartData: {
         labels: ['2019', '2020', '2021'],
-        datasets: [{ label: '당기순이익', data: [0, 0, 0] }],
+        datasets: [
+          {
+            label: '당기순이익',
+            data: [0, 0, 0],
+            backgroundColor: ['#d9d9d9', '#d9d9d9', '#fcaeae'],
+          },
+        ],
       },
       chartOptions: {
         responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
       },
     };
   },
