@@ -31,7 +31,7 @@
         <div class="info">{{ detail[0].info }}</div>
       </div>
 
-
+      <canvas id="myChart" width="400" height="400"></canvas>
       <ul class="news">
         <p>종목뉴스</p> <br>
             <li v-for="(item ,i) in news" :key="item.content">
@@ -39,7 +39,16 @@
                 <p>  {{item.tstamp}}</p>
             </li>
         </ul>
-      <BarChart :list-data="detail" />
+      <BarChart :list-data="detail" :key="detail.length" :isLoaded="barLoad" />
+      <BarChart2 :list-data="detail" :key="detail.length"  :isLoaded="barLoad" />
+      <ExpertComment />
+
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+
+
+
       <div class="modal-row3">
         <router-link
           id="buy-btn"
@@ -61,13 +70,26 @@
 </template>
 
 <script>
-
 import BarChart from '../components/BarChart'
+import BarChart2 from '../components/BarChart2'
+import ExpertComment from '../components/ExpertComment'
+var ctx = document.getElementById('myChart');
+console.log("sd",ctx)
 import axios from 'axios';
+
+// const config = {
+//   type: 'line',
+//   data,
+//   options: {}
+// };
+// var myChart = new Chart(
+//     document.getElementById('myChart'),
+//     config
+//   );
 
 export default {
   name: 'App',
-  components: { BarChart }
+  components: { BarChart,BarChart2,ExpertComment }
   ,
   data() {
     return {
@@ -81,7 +103,7 @@ export default {
         '1년': 'year',
         '3년': 'year3',
       },
-
+      barLoad: false,
     };
   },
 
@@ -125,6 +147,7 @@ export default {
       .then((response) => {
         this.detail = response.data;
         this.imgurl = response.data[0].week;
+        this.barLoad = true;
       });
 
       axios
