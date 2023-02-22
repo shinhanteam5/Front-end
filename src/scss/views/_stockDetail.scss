@@ -138,7 +138,7 @@ div#stockList-background > ul.news{
   width: 424px;
   height: 48px;
   left: 40px;
-  top: 700px;
+  top: 1800px;
   font-size: 25px;
   font-family: 'Noto Sans KR';
   font-weight: 500;
@@ -158,3 +158,49 @@ div#stockList-background > ul.news{
   
 }
 
+
+div#stockList-background > div.expert  {
+  display: block;
+  position: absolute;
+  width: 424px;
+  height: 48px;
+  left: 40px;
+  top: 1500px;
+  font-size: 25px;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  margin-top: 20px;
+  div.good_comment{
+    
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    border-radius: 50px;
+    text-align : center;
+  }
+  div.good{
+    padding: 10px 0px;
+    p{
+      font-size: 15px;
+    }
+    background-color: rgb(250, 177, 153);
+  }
+  div.soso{
+    padding: 10px 0px;
+    p{
+      font-size: 15px;
+    }
+    background-color: rgb(203, 203, 203);
+  }
+  div.bad{
+    padding: 10px 0px;
+    p{
+      font-size: 15px;
+    }
+    background-color: rgb(142, 174, 222);
+  }
+}
+// div#stockList-background > div.expert > div{
+//   width: 300px;
+//   padding-left: 130px;
+// }

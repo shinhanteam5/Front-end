@@ -30,8 +30,27 @@
         회사소개
         <div class="info">{{ detail[0].info }}</div>
       </div>
+      <BarChart :list-data="detail" :key="detail.length" :isLoaded="barLoad" />
+      <BarChart2 :list-data="detail" :key="detail.length"  :isLoaded="barLoad" />
 
-      <canvas id="myChart" width="400" height="400"></canvas>
+      <div class="expert">
+        <p>전문가의견</p>
+        <div class="good_comment">
+
+          {{good }}
+        </div>
+        <div>
+                <div class="good" :style=" 'width:' + (good ) +'%'"
+                ><p>긍정</p></div>
+                <div class="soso" :style=" 'width:' + (soso ) +'%'"
+                ><p>중립</p></div>
+                <div class="bad" :style=" 'width:' + (bad ) +'%'"
+                ><p>부정</p></div>
+        </div>
+      </div>
+
+
+
       <ul class="news">
         <p>종목뉴스</p> <br>
             <li v-for="(item ,i) in news" :key="item.content">
@@ -39,13 +58,6 @@
                 <p>  {{item.tstamp}}</p>
             </li>
         </ul>
-      <BarChart :list-data="detail" :key="detail.length" :isLoaded="barLoad" />
-      <BarChart2 :list-data="detail" :key="detail.length"  :isLoaded="barLoad" />
-      <ExpertComment />
-
-      <div>
-        <canvas id="myChart"></canvas>
-      </div>
 
 
 
@@ -93,6 +105,9 @@ export default {
   ,
   data() {
     return {
+      good:0,
+      bad:0,
+      soso:0,
       imgurl: '',
       chartContext: '1주',
       detail: [{}],
@@ -166,8 +181,19 @@ export default {
           })
       
       });
-      console.log(this.news)
-
+      var random1 = Math.floor(Math.random() * 101);
+              var random2 = Math.floor(Math.random() * 101);
+              if(random1> random2){
+                var a = random2
+                var b = random1
+              }
+              else{
+                var b = random2
+                var a = random1
+              }
+        this.good=a
+        this.bad=b
+        this.soso=100-b
 
   },
 };
