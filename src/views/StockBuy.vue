@@ -36,7 +36,7 @@
           </p>
           <p v-else-if="inputMoney > 50000 && inputMoney <= 100000">
             <img src="../assets/steakers/ktx.png" />
-            KTX만큼 투자하기
+            KTX 티켓만큼 투자하기
           </p>
           <p v-else-if="inputMoney > 100000 && inputMoney <= 300000">
             <img src="../assets/steakers/earphone.png" />

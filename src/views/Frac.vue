@@ -65,11 +65,94 @@
           <p>나의 포트폴리오 한눈에 보기</p>
         </div>
         <div
+          v-if="totalInvest > 1000 && totalInvest < 3000"
           @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
-          <p>만큼 투자했어요</p>
+          <img src="../assets/steakers/cookie.png" />
+          <p>과자만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest >= 3000 && totalInvest <= 5000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/coffee.png" />
+          <p>커피만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 5000 && totalInvest < 14000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/food.png" />
+          <p>점심만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 14000 && totalInvest <= 25000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/chicken.png" />
+          <p>치킨만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 25000 && totalInvest <= 50000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/pizza.png" />
+          <p>피자만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 50000 && totalInvest <= 100000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/ktx.png" />
+          <p>KTX 티켓만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 100000 && totalInvest <= 300000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/earphone.png" />
+          <p>무선 이어폰만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 300000 && totalInvest <= 500000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/smartwatch.png" />
+          <p>스마트 워치만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 500000 && totalInvest <= 700000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/allowance.png" />
+          <p>한 달 용돈만큼 투자했어요</p>
+        </div>
+        <div
+          v-else
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/travel.png" />
+          <p>여행 경비만큼 투자했어요</p>
         </div>
         <div class="stocks-wrapper">
           <div class="title">
