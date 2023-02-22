@@ -6,23 +6,31 @@ div.img-wrapper {
   }
 }
 
-.stock-name {
-  font-family: $noto-sans;
-  font-weight: 500;
-  font-size: 15px;
-}
+div.stock-title {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 42px;
+  margin-bottom: 15px;
+  .stock-name {
+    font-family: $noto-sans;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
 
-.stock-current-price {
-  font-family: $noto-sans;
-  font-weight: 500;
-  font-size: 35px;
-}
+  .stock-current-price {
+    font-family: $noto-sans;
+    font-weight: 500;
+    font-size: 35px;
+    margin-bottom: 3px;
+  }
 
-.stock-earn {
-  font-size: 12px;
-  font-weight: 500;
-  font-family: $noto-sans;
-  color: $thick-red;
+  .stock-earn {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: $noto-sans;
+    color: $thick-red;
+  }
 }
 
 div.chart-button {
@@ -33,7 +41,8 @@ div.chart-button {
     width: 100%;
   }
   ul.chart-tab {
-    margin: 28px 0px;
+    margin-top: 28px;
+    margin-bottom: 38px;
     display: flex;
     justify-content: space-around;
     li {
@@ -51,18 +60,26 @@ div.chart-button {
 }
 
 div.introduce {
+  margin-bottom: 65px;
   font-family: $noto-sans;
   font-weight: 600;
+  padding: 0px 28px;
   p {
     font-size: 18px;
     font-weight: 600;
   }
   div.info {
+    word-break: break-word;
     margin-top: 20px;
-    line-height: 1.5;
+    line-height: 1.8;
     font-size: 14px;
     font-weight: 400;
   }
+}
+
+div.chart-wrapper {
+  padding: 0px 28px;
+  margin-bottom: 48px;
 }
 
 // 구매 버튼

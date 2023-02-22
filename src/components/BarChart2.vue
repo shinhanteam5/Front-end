@@ -1,14 +1,12 @@
 <template>
-  <div class="chart-wrapper">
-    <p>당기순이익</p>
-    <Bar
-      class="bar"
-      id="my-chart-id"
-      :options="chartOptions"
-      :data="chartData"
-      v-if="isLoaded"
-    />
-  </div>
+  <p>당기순이익</p>
+  <Bar
+    class="bar"
+    id="my-chart-id"
+    :options="chartOptions"
+    :data="chartData"
+    v-if="isLoaded"
+  />
 </template>
 
 <script>
@@ -70,5 +68,6 @@ p {
   font-weight: 600;
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 </style>

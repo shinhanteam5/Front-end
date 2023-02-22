@@ -5,15 +5,17 @@
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
       <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
-      <div class="stock-name">
-        {{ detail[0].name }}
-      </div>
-      <div class="stock-current-price">
-        {{ detail[0].current_price }}
-      </div>
-      <div class="stock-earn">
-        <span v-if="detail[0].earn > 0">+</span>
-        {{ detail[0].earn }} ({{ detail[0].earn_rate }}%) 오늘
+      <div class="stock-title">
+        <div class="stock-name">
+          {{ detail[0].name }}
+        </div>
+        <div class="stock-current-price">
+          {{ detail[0].current_price }}
+        </div>
+        <div class="stock-earn">
+          <span v-if="detail[0].earn > 0">+</span>
+          {{ detail[0].earn }} ({{ detail[0].earn_rate }}%) 오늘
+        </div>
       </div>
 
       <div class="chart-button">
