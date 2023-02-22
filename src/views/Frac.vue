@@ -310,11 +310,15 @@ export default {
     await axios
       .get(`http://127.0.0.1:8000/api/portfolio/${userId}`, frm)
       .then((response) => {
-        // console.log(response.data[0]);
+        console.log(response.data[0].stocks);
         this.stocks = response.data[0].stocks; // 보유 주식
         this.totalEarn = response.data[0].total_earn;
         this.totalInvest = response.data[0].total_invest;
         this.totalRate = response.data[0].total_rate;
+
+        this.stocks.sort((a, b) =>{ 
+         return b.earn_rate - a.earn_rate
+  })
       })
       .catch((error) => console.log(error));
 
@@ -336,6 +340,8 @@ export default {
       this.data.datasets[0].data.push(stock.invest_amount);
       this.data.datasets[0].backgroundColor.push(colors[index]);
     });
+
+    
   },
 };
 </script>
