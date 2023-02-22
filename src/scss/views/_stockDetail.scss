@@ -108,36 +108,68 @@ div.modal-row3 {
 }
 
 div.expert {
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  margin-top: 20px;
-  div.good_comment {
-    width: 100px;
-    height: 100px;
-    background-color: aqua;
-    border-radius: 50px;
-    text-align: center;
-  }
-  div.good {
-    padding: 10px 0px;
-    p {
-      font-size: 15px;
+  margin-bottom: 65px;
+  font-family: $noto-sans;
+  font-weight: 600;
+  padding: 0px 28px;
+  section {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.8fr;
+    padding: 28px 0px;
+    div.good-comment-circle {
+      width: 90px;
+      height: 90px;
+      background-color: #fef0f4;
+      color: #af4448;
+      font-size: 16px;
+      font-family: $noto-sans;
+      font-weight: 600;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    background-color: rgb(250, 177, 153);
-  }
-  div.soso {
-    padding: 10px 0px;
-    p {
-      font-size: 15px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      &.squares {
+        margin-left: 8px;
+      }
+      &.percents {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      div {
+        padding: 8px 0px;
+        margin: 2px 0px;
+        &.good {
+          background-color: #f37a96;
+        }
+        &.soso {
+          background-color: #9a9a9a;
+        }
+        &.bad {
+          background-color: #56aade;
+        }
+      }
+      p {
+        font-size: 13px;
+        margin: 5px 0px;
+        font-weight: 500;
+        font-family: $noto-sans;
+        &.good {
+          color: #af4448;
+        }
+        &.soso {
+          color: #999999;
+        }
+        &.bad {
+          color: #2f72a1;
+        }
+      }
     }
-    background-color: rgb(203, 203, 203);
-  }
-  div.bad {
-    padding: 10px 0px;
-    p {
-      font-size: 15px;
-    }
-    background-color: rgb(142, 174, 222);
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <p class="grow">성장성(매출액, 당기순이익)</p>
+  <p class="grow">매출액</p>
   <Bar
     class="bar"
     id="my-chart-id"

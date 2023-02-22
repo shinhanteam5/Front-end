@@ -52,14 +52,19 @@
 
       <div class="introduce expert">
         <p>전문가의견</p>
-        <div class="good_comment">
-          {{ good }}
-        </div>
-        <div>
-          <div class="good" :style="'width:' + good + '%'"><p>긍정</p></div>
-          <div class="soso" :style="'width:' + soso + '%'"><p>중립</p></div>
-          <div class="bad" :style="'width:' + bad + '%'"><p>부정</p></div>
-        </div>
+        <section>
+          <div class="good-comment-circle">{{ good }}%</div>
+          <div class="squares">
+            <div class="good" :style="'width:' + good + '%'"></div>
+            <div class="soso" :style="'width:' + soso + '%'"></div>
+            <div class="bad" :style="'width:' + bad + '%'"></div>
+          </div>
+          <div class="percents">
+            <p class="good">긍정{{ good }}%</p>
+            <p class="soso">중립{{ soso }}%</p>
+            <p class="bad">부정{{ bad }}%</p>
+          </div>
+        </section>
       </div>
 
       <ul class="introduce news">
