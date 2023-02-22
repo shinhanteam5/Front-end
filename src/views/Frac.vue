@@ -37,7 +37,7 @@
       </div>
       <!-- 보유 주식 있는 경우 -->
       <div v-else class="hasStock">
-        <div class="main-contents" id="page1">
+        <div class="main-contents" v-if="show === 1">
           <div class="contents-col1">
             <p>조수진 님의</p>
             <p>소수점 투자 현황입니다</p>
@@ -53,20 +53,12 @@
             <img src="../assets/characters/character6.png" />
           </div>
         </div>
-        <div class="main-contents not-show" id="page2">
+        <div class="main-contents" v-else>
           <div class="contents-col1">
-            <p>조수진 님의</p>
-            <p>소수점 투자 현황입니다</p>
-            <h1>{{ totalInvest }}원</h1>
-            <h3>
-              <span v-if="totalEarn > 0" class="red">▲ {{ totalEarn }}원 </span>
-              <span v-else class="blue">▼{{ totalEarn }}원 </span>
-              <span v-if="totalRate > 0" class="red"> (+{{ totalRate }}%)</span>
-              <span v-else class="blue"> (-{{ totalRate }}%)</span>
-            </h3>
+            <Pie :data="data" :options="options" />
           </div>
           <div class="img-wrapper2">
-            <img src="../assets/characters/character6.png" />
+            <img src="../assets/characters/character4.png" />
           </div>
         </div>
         <div class="portfolio-box" id="box1">
@@ -152,14 +144,35 @@
 
 <script>
 import axios from 'axios';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'vue-chartjs';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
 export default {
+  components: {
+    Pie,
+  },
+
   data() {
     return {
       stocks: [], // 주식
       totalEarn: 0, // 총 수익
       totalInvest: 0, // 총 투자 금액
       totalRate: 0, // 총 수익률
+      data: {
+        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+        datasets: [
+          {
+            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            data: [40, 20, 80, 10],
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+      show: 1,
     };
   },
 
@@ -179,10 +192,11 @@ export default {
     },
 
     showPortfolio() {
-      const content1 = document.querySelector('#page1');
-      const content2 = document.querySelector('#page2');
-      content1.classList.add('not-show');
-      content2.classList.remove('not-show');
+      // const content1 = document.querySelector('#page1');
+      // const content2 = document.querySelector('#page2');
+      // content1.classList.add('not-show');
+      // content2.classList.remove('not-show');
+      this.show = 0;
 
       const box1 = document.querySelector('#box1');
       const box2 = document.querySelector('#box2');
@@ -191,10 +205,11 @@ export default {
     },
 
     notShowPortfolio() {
-      const content1 = document.querySelector('#page1');
-      const content2 = document.querySelector('#page2');
-      content1.classList.remove('not-show');
-      content2.classList.add('not-show');
+      this.show = 1;
+      // const content1 = document.querySelector('#page1');
+      // const content2 = document.querySelector('#page2');
+      // content1.classList.remove('not-show');
+      // content2.classList.add('not-show');
 
       const box1 = document.querySelector('#box1');
       const box2 = document.querySelector('#box2');
