@@ -1,50 +1,48 @@
 div.img-wrapper {
+  height: auto;
   div#stockList-background {
     background-color: white;
-    height: 2000px;
+    height: auto;
   }
 }
 
-.stock-name {
-  position: absolute;
-  left: 52px;
-  top: 95px;
-  font-family: $noto-sans;
-  font-weight: 500;
-  font-size: 15px;
-}
+div.stock-title {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 42px;
+  margin-bottom: 15px;
+  .stock-name {
+    font-family: $noto-sans;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
 
-.stock-current-price {
-  position: absolute;
-  left: 52px;
-  top: 115px;
-  font-family: $noto-sans;
-  font-weight: 500;
-  font-size: 35px;
-}
+  .stock-current-price {
+    font-family: $noto-sans;
+    font-weight: 500;
+    font-size: 35px;
+    margin-bottom: 3px;
+  }
 
-.stock-earn {
-  position: absolute;
-  left: 50px;
-  top: 160px;
-  font-size: 12px;
-  font-weight: 500;
-  font-family: $noto-sans;
-  color: red;
+  .stock-earn {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: $noto-sans;
+    color: $thick-red;
+  }
 }
 
 div.chart-button {
-  position: absolute;
   width: 100%;
-  left: 0px;
-  top: 174px;
   text-align: center;
   margin: 12px 0px;
   img {
     width: 100%;
   }
   ul.chart-tab {
-    margin: 28px 0px;
+    margin-top: 28px;
+    margin-bottom: 38px;
     display: flex;
     justify-content: space-around;
     li {
@@ -61,46 +59,43 @@ div.chart-button {
   }
 }
 
-.chartbutton > .tab {
-  text-align: center;
-  font-size: 16px;
-  font-family: 'Noto Sans KR';
-}
-.chartbutton > .tab > li {
-  display: inline-block;
-  margin: 0 20px;
-}
-
-div#stockList-background > div:nth-child(7) {
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 500px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  .info {
-    margin-top: 10px;
-    width: 340px;
-    line-height: 150%;
-    font-family: 'Noto Sans KR';
-    font-size: 13px;
-    font-weight: 300;
+div.introduce {
+  margin-bottom: 65px;
+  font-family: $noto-sans;
+  font-weight: 600;
+  padding: 0px 28px;
+  p {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  div.info {
+    word-break: break-word;
+    margin-top: 20px;
+    line-height: 1.8;
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 
-#stockList-background > div.modal-row3 {
+div.chart-wrapper {
+  padding: 0px 28px;
+  margin-bottom: 48px;
+}
+
+// 구매 버튼
+div.modal-row3 {
   position: fixed;
-  bottom: 62px;
+  bottom: 54px;
   width: 424px;
   height: 50px;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  #buy-btn {
-    width: 400px;
+  #buy-btn,
+  #sell-btn {
+    margin: 0px 13px;
+    width: 160px;
     padding: 11px 0px;
     background-color: $purple;
     color: white;
@@ -112,106 +107,106 @@ div#stockList-background > div:nth-child(7) {
     font-size: 18px;
     font-weight: 600;
   }
-}
-//당기순이익
-div#stockList-background > div:nth-child(7) {
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 500px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  .info {
-    margin-top: 10px;
-    width: 340px;
-    line-height: 150%;
-    font-family: 'Noto Sans KR';
-    font-size: 13px;
-    font-weight: 300;
+  #sell-btn {
+    border: none;
+    padding: 7.2px 0px;
+    background-color: #cccccc;
+    color: black;
   }
 }
-//뉴스
-div#stockList-background > ul.news{
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 1600px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  margin-top: 20px;
-  
 
-  li{
-    
-    font-size: 13px;
-    line-height: 150%;
-    font-weight: 300;
-    p:nth-child(2){
-      font-size: 11px;
-      color: #1d232f;
+div.expert {
+  margin-bottom: 55px;
+  font-family: $noto-sans;
+  font-weight: 600;
+  padding: 0px 28px;
+  section {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.8fr;
+    padding: 28px 0px;
+    div.good-comment-circle {
+      width: 90px;
+      height: 90px;
+      background-color: #fef0f4;
+      color: #af4448;
+      font-size: 16px;
+      font-family: $noto-sans;
+      font-weight: 600;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      &.squares {
+        margin-left: 8px;
+      }
+      &.percents {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      div {
+        padding: 8px 0px;
+        margin: 2px 0px;
+        &.good {
+          background-color: #f37a96;
+        }
+        &.soso {
+          background-color: #9a9a9a;
+        }
+        &.bad {
+          background-color: #56aade;
+        }
+      }
+      p {
+        font-size: 13px;
+        margin: 5px 0px;
+        font-weight: 500;
+        font-family: $noto-sans;
+        &.good {
+          color: #af4448;
+        }
+        &.soso {
+          color: #999999;
+        }
+        &.bad {
+          color: #2f72a1;
+        }
+      }
     }
   }
-  
 }
 
-
-div#stockList-background > div.expert  {
-  display: block;
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 1300px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  margin-top: 20px;
-  div.good_comment{
-    
-    width: 100px;
-    height: 100px;
-    background-color: aqua;
-    border-radius: 50px;
-    text-align : center;
+ul.news {
+  margin-bottom: 140px;
+  font-family: $noto-sans;
+  font-weight: 600;
+  padding: 0px 28px;
+  p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 7px;
   }
-  div.good{
-    padding: 10px 0px;
-    p{
+  li#news-item {
+    cursor: pointer;
+    padding: 15px 0px;
+    p {
       font-size: 15px;
+      font-weight: 400;
+      &#title {
+        margin-bottom: 10px;
+      }
+      &#date {
+        font-size: 13px;
+        opacity: 0.6;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $light-grey;
+      }
     }
-    background-color: rgb(250, 177, 153);
   }
-  div.soso{
-    padding: 10px 0px;
-    p{
-      font-size: 15px;
-    }
-    background-color: rgb(203, 203, 203);
-  }
-  div.bad{
-    padding: 10px 0px;
-    p{
-      font-size: 15px;
-    }
-    background-color: rgb(142, 174, 222);
-  }
-}
-// div#stockList-background > div.expert > div{
-//   width: 300px;
-//   padding-left: 130px;
-// }
-
-div#stockList-background > div:nth-child(16){
-  position: absolute;
-  top: 1850px;
-  padding: 10px;
-  text-align: center;
-  font-size: 20px;
-  width: 400px;
-
-  border: 1px solid rgb(0, 0, 0);
 }
