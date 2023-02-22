@@ -4,7 +4,7 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <img onClick="history.back()" id="top-bar" src="../assets/components/top-bar.png" alt="" />
       <div class="stock-name">
         {{ detail[0].name }}
       </div>
@@ -115,7 +115,7 @@ export default {
       news: [],
       imageMatch: {
         '1주': 'week',
-        한달: 'month3',
+        '한달': 'month3',
         '1년': 'year',
         '3년': 'year3',
       },

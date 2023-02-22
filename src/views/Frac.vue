@@ -4,7 +4,7 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <img href='' id="top-bar" src="../assets/components/top-bar.png" alt="" />
       <button @click="openModal()" id="btn1-to-invest">투자하기</button>
       <img
         id="top-menu-1"
