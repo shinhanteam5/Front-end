@@ -5,6 +5,19 @@ div.img-wrapper {
   }
 }
 
+div.loading-wrapper {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img#loading {
+    width: 100px;
+  }
+  &.not-show {
+    display: none;
+  }
+}
+
 div#filter-bar {
   position: fixed;
   width: 384px;
@@ -91,7 +104,7 @@ section.list {
             color: $thick-red;
           }
           &.blue {
-            color:$blue;
+            color: $blue;
           }
         }
       }
