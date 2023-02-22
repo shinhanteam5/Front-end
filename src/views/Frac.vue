@@ -61,11 +61,15 @@
             <img src="../assets/characters/character4.png" />
           </div>
         </div>
-        <div class="portfolio-box" id="box1">
-          <p @click="showPortfolio()">나의 포트폴리오 한눈에 보기</p>
+        <div @click="showPortfolio()" class="portfolio-box" id="box1">
+          <p>나의 포트폴리오 한눈에 보기</p>
         </div>
-        <div class="portfolio-box not-show" id="box2">
-          <p @click="notShowPortfolio()">만큼 투자했어요</p>
+        <div
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <p>만큼 투자했어요</p>
         </div>
         <div class="stocks-wrapper">
           <div class="title">
@@ -171,6 +175,11 @@ export default {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          datalabels: {
+            display: true,
+          },
+        },
       },
       show: 1,
     };
