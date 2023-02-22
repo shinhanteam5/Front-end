@@ -208,10 +208,6 @@ export default {
       box2.classList.add('not-show');
       box1.classList.remove('not-show');
     },
-
-    makeChart() {
-      console.log(this.stocks);
-    },
   },
 
   async created() {
