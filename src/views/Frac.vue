@@ -16,7 +16,8 @@
         src="../assets/components/frac-top-menu-2.jpg"
         alt=""
       />
-      <div v-if="!hasInvestment" class="btn-wrapper">
+      <!-- 보유 주식 없는 경우 -->
+      <div v-if="stocks.length === 0" class="btn-wrapper">
         <img
           class="character"
           src="../assets/characters/character2.png"
@@ -34,7 +35,23 @@
           alt=""
         />
       </div>
-      <div v-else>보유한 소수점 주식 있는 경우</div>
+      <!-- 보유 주식 있는 경우 -->
+      <div v-else>
+        <div class="main-contents">
+          <div class="contents-col1">
+            <p>조수진 님의</p>
+            <p>소수점 투자 현황입니다</p>
+            <h1>{{ totalInvest }}원</h1>
+            <h3>
+              <span>{{ totalEarn }}</span>
+              <span>{{ totalRate }}</span>
+            </h3>
+            <div class="img-wrapper">
+              <img src="../assets/characters/character6.png" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- modal  -->
@@ -79,7 +96,6 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      hasInvestment: false,
       stocks: [], // 주식
       totalEarn: 0, // 총 수익
       totalInvest: 0, // 총 투자 금액
