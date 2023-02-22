@@ -45,7 +45,7 @@
                 <p>  {{item.tstamp}}</p>
             </li>
         </ul>
- 
+      <BarChart :list-data="detail" />
       <div class="modal-row3">
         <router-link
           id="buy-btn"
@@ -68,10 +68,13 @@
 
 <script>
 
-
+import BarChart from '../components/BarChart'
 import axios from 'axios';
 
 export default {
+  name: 'App',
+  components: { BarChart }
+  ,
   data() {
     return {
       imgurl: '',
