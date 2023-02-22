@@ -53,9 +53,9 @@
             <img src="../assets/characters/character6.png" />
           </div>
         </div>
-        <div class="main-contents" v-else>
+        <div class="main-contents" id="page2" v-else>
           <div class="contents-col1">
-            <Pie :data="data" :options="options" />
+            <Pie :data="data" :options="options" id="pie-chart" />
           </div>
           <div class="img-wrapper2">
             <img src="../assets/characters/character4.png" />
@@ -192,10 +192,6 @@ export default {
     },
 
     showPortfolio() {
-      // const content1 = document.querySelector('#page1');
-      // const content2 = document.querySelector('#page2');
-      // content1.classList.add('not-show');
-      // content2.classList.remove('not-show');
       this.show = 0;
 
       const box1 = document.querySelector('#box1');
@@ -206,10 +202,6 @@ export default {
 
     notShowPortfolio() {
       this.show = 1;
-      // const content1 = document.querySelector('#page1');
-      // const content2 = document.querySelector('#page2');
-      // content1.classList.remove('not-show');
-      // content2.classList.add('not-show');
 
       const box1 = document.querySelector('#box1');
       const box2 = document.querySelector('#box2');
@@ -240,14 +232,14 @@ export default {
 
     const colors = [
       '#7284fe',
-      '#fcaeae',
+      '#9575cd',
+      '#2e66e1',
+      '#e57373',
       '#d8ef79',
       '#ff8a65',
-      '#2e66e1',
-      '#9575cd',
+      '#fcaeae',
       '#e6ee9c',
       '#c8d8ff',
-      '#e57373',
       '#b0bec5',
       '#d7ccc8',
     ];
