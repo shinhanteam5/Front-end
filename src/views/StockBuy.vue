@@ -117,44 +117,36 @@
         </section>
         <!-- 구매하기 버튼 -->
         <button id="buy-btn" @click="buy()">구매하기</button>
-
-        <!-- modal  -->
-        <div class="modal-wrapper">
-          <div id="close">
-            <svg
-              @click="closeModal()"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </div>
-          <div class="modal-row1">소수점 투자</div>
-          <div class="modal-row2">
-            <img src="../assets/characters/character3.png" alt="" />
-            <img
-              class="small"
-              src="../assets/characters/character4.png"
-              alt=""
-            />
-          </div>
-          <div class="modal-row3">
-            <router-link class="link-btn" id="first" to="/frac/select"
-              >종목 추천받기</router-link
-            >
-            <router-link class="link-btn" to="/frac/search"
-              >종목 검색하기</router-link
-            >
-          </div>
-        </div>
+      </div>
+    </div>
+    <!-- modal  -->
+    <div class="modal-wrapper">
+      <div id="close">
+        <svg
+          @click="closeModal()"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </div>
+      <div class="modal-row1">
+        <img src="../assets/characters/character3.png" alt="" />
+      </div>
+      <div class="modal-row2">
+        <p class="bold">매수 완료</p>
+        <p>정상적으로 매수 완료되었습니다.</p>
+      </div>
+      <div class="modal-btn">
+        <router-link class="link-btn" to="/frac">완료</router-link>
       </div>
     </div>
   </div>
@@ -198,6 +190,8 @@ export default {
           console.log(response.data);
         })
         .catch((error) => console.log(error));
+
+      this.openModal();
     },
 
     makeFormData(name, stock_code) {
@@ -262,6 +256,20 @@ export default {
 
       this.shareNumber = 0;
       this.shownShareNumber = '-';
+    },
+
+    openModal() {
+      const modal = document.querySelector('.modal-wrapper');
+      const background = document.querySelector('.background');
+      modal.classList.add('show');
+      background.classList.add('be-darker');
+    },
+
+    closeModal() {
+      const modal = document.querySelector('.modal-wrapper');
+      const background = document.querySelector('.background');
+      modal.classList.remove('show');
+      background.classList.remove('be-darker');
     },
   },
 
