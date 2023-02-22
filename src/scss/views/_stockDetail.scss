@@ -1,7 +1,7 @@
 div.img-wrapper {
   div#stockList-background {
     background-color: white;
-    height: 2000px;
+    height: auto;
   }
 }
 
@@ -61,6 +61,14 @@ div.chart-button {
   }
 }
 
+div.chart-wrapper {
+  position: static;
+}
+
+#bar-chart-1 {
+  position: relative;
+}
+
 .chartbutton > .tab {
   text-align: center;
   font-size: 16px;
@@ -71,22 +79,18 @@ div.chart-button {
   margin: 0 20px;
 }
 
-div#stockList-background > div:nth-child(7) {
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 500px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  .info {
-    margin-top: 10px;
-    width: 340px;
-    line-height: 150%;
-    font-family: 'Noto Sans KR';
-    font-size: 13px;
-    font-weight: 300;
+div.introduce {
+  font-family: $noto-sans;
+  font-weight: 600;
+  p {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  div.info {
+    margin-top: 20px;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 
@@ -133,7 +137,7 @@ div#stockList-background > div:nth-child(7) {
   }
 }
 //뉴스
-div#stockList-background > ul.news{
+div#stockList-background > ul.news {
   position: absolute;
   width: 424px;
   height: 48px;
@@ -143,23 +147,19 @@ div#stockList-background > ul.news{
   font-family: 'Noto Sans KR';
   font-weight: 500;
   margin-top: 20px;
-  
 
-  li{
-    
+  li {
     font-size: 13px;
     line-height: 150%;
     font-weight: 300;
-    p:nth-child(2){
+    p:nth-child(2) {
       font-size: 11px;
       color: #1d232f;
     }
   }
-  
 }
 
-
-div#stockList-background > div.expert  {
+div#stockList-background > div.expert {
   display: block;
   position: absolute;
   width: 424px;
@@ -170,31 +170,30 @@ div#stockList-background > div.expert  {
   font-family: 'Noto Sans KR';
   font-weight: 500;
   margin-top: 20px;
-  div.good_comment{
-    
+  div.good_comment {
     width: 100px;
     height: 100px;
     background-color: aqua;
     border-radius: 50px;
-    text-align : center;
+    text-align: center;
   }
-  div.good{
+  div.good {
     padding: 10px 0px;
-    p{
+    p {
       font-size: 15px;
     }
     background-color: rgb(250, 177, 153);
   }
-  div.soso{
+  div.soso {
     padding: 10px 0px;
-    p{
+    p {
       font-size: 15px;
     }
     background-color: rgb(203, 203, 203);
   }
-  div.bad{
+  div.bad {
     padding: 10px 0px;
-    p{
+    p {
       font-size: 15px;
     }
     background-color: rgb(142, 174, 222);

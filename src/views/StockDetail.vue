@@ -26,40 +26,42 @@
         </ul>
       </div>
 
-      <div>
-        회사소개
+      <div class="introduce">
+        <p>회사 소개</p>
         <div class="info">{{ detail[0].info }}</div>
       </div>
-      <BarChart :list-data="detail" :key="detail.length" :isLoaded="barLoad" />
-      <BarChart2 :list-data="detail" :key="detail.length"  :isLoaded="barLoad" />
 
-      <div class="expert">
+      <div class="chart-wrapper">
+        <BarChart
+          id="bar-chart-1"
+          :list-data="detail"
+          :key="detail.length"
+          :isLoaded="barLoad"
+        />
+      </div>
+
+      <BarChart2 :list-data="detail" :key="detail.length" :isLoaded="barLoad" />
+
+      <div class="introduce expert">
         <p>전문가의견</p>
         <div class="good_comment">
-
-          {{good }}
+          {{ good }}
         </div>
         <div>
-                <div class="good" :style=" 'width:' + (good ) +'%'"
-                ><p>긍정</p></div>
-                <div class="soso" :style=" 'width:' + (soso ) +'%'"
-                ><p>중립</p></div>
-                <div class="bad" :style=" 'width:' + (bad ) +'%'"
-                ><p>부정</p></div>
+          <div class="good" :style="'width:' + good + '%'"><p>긍정</p></div>
+          <div class="soso" :style="'width:' + soso + '%'"><p>중립</p></div>
+          <div class="bad" :style="'width:' + bad + '%'"><p>부정</p></div>
         </div>
       </div>
 
-
-
-      <ul class="news">
-        <p>종목뉴스</p> <br>
-            <li v-for="(item ,i) in news" :key="item.content">
-                <p>{{item.content}}</p>
-                <p>  {{item.tstamp}}</p>
-            </li>
-        </ul>
-
-
+      <ul class="introduce news">
+        <p>종목뉴스</p>
+        <br />
+        <li v-for="(item, i) in news" :key="item.content">
+          <p>{{ item.content }}</p>
+          <p>{{ item.tstamp }}</p>
+        </li>
+      </ul>
 
       <div class="modal-row3">
         <router-link
@@ -82,11 +84,11 @@
 </template>
 
 <script>
-import BarChart from '../components/BarChart'
-import BarChart2 from '../components/BarChart2'
-import ExpertComment from '../components/ExpertComment'
+import BarChart from '../components/BarChart';
+import BarChart2 from '../components/BarChart2';
+import ExpertComment from '../components/ExpertComment';
 var ctx = document.getElementById('myChart');
-console.log("sd",ctx)
+console.log('sd', ctx);
 import axios from 'axios';
 
 // const config = {
@@ -101,13 +103,12 @@ import axios from 'axios';
 
 export default {
   name: 'App',
-  components: { BarChart,BarChart2,ExpertComment }
-  ,
+  components: { BarChart, BarChart2, ExpertComment },
   data() {
     return {
-      good:0,
-      bad:0,
-      soso:0,
+      good: 0,
+      bad: 0,
+      soso: 0,
       imgurl: '',
       chartContext: '1주',
       detail: [{}],
@@ -165,40 +166,35 @@ export default {
         this.barLoad = true;
       });
 
-      axios
+    axios
       .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}/news`)
       .then((response) => {
-          response.data.forEach(item=>{
-            var time = item.tstamp
-            var month = time.substr(0,2)+"월"
-            var day = time.substr(2,5)+"일"
-  
-           var news = {
-              content:item.content,
-              tstamp:month+day
-           }
-           this.news.push(news)
-          })
-      
-      });
-      var random1 = Math.floor(Math.random() * 101);
-              var random2 = Math.floor(Math.random() * 101);
-              if(random1> random2){
-                var a = random2
-                var b = random1
-              }
-              else{
-                var b = random2
-                var a = random1
-              }
-        this.good=a
-        this.bad=b
-        this.soso=100-b
+        response.data.forEach((item) => {
+          var time = item.tstamp;
+          var month = time.substr(0, 2) + '월';
+          var day = time.substr(2, 5) + '일';
 
+          var news = {
+            content: item.content,
+            tstamp: month + day,
+          };
+          this.news.push(news);
+        });
+      });
+    var random1 = Math.floor(Math.random() * 101);
+    var random2 = Math.floor(Math.random() * 101);
+    if (random1 > random2) {
+      var a = random2;
+      var b = random1;
+    } else {
+      var b = random2;
+      var a = random1;
+    }
+    this.good = a;
+    this.bad = b;
+    this.soso = 100 - b;
   },
 };
-
-
 </script>
 
 <style lang="scss" scoped>
