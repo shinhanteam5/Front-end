@@ -61,17 +61,6 @@ div.chart-button {
   }
 }
 
-div#stockList-background > div.chartbutton > ul > li.on {
-  width: 40px;
-  height: 30px;
-  background: #2e66e1;
-  padding-top: 10px;
-  border-radius: 12px;
-  a {
-    color: white;
-  }
-}
-
 .chartbutton > .tab {
   text-align: center;
   font-size: 16px;
@@ -80,10 +69,6 @@ div#stockList-background > div.chartbutton > ul > li.on {
 .chartbutton > .tab > li {
   display: inline-block;
   margin: 0 20px;
-}
-
-.chartbutton > .tab > li.on a {
-  color: white;
 }
 
 div#stockList-background > div:nth-child(7) {

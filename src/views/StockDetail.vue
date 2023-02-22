@@ -55,6 +55,7 @@
               name: detail[0].name,
               user_id: 1,
               stock_code: detail[0].stock_code,
+              current_price: detail[0].current_price,
             },
           }"
         >
