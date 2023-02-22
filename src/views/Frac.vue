@@ -53,19 +53,106 @@
             <img src="../assets/characters/character6.png" />
           </div>
         </div>
-        <div class="main-contents" v-else>
+        <div class="main-contents" id="page2" v-else>
           <div class="contents-col1">
-            <Pie :data="data" :options="options" />
+            <Pie :data="data" :options="options" id="pie-chart" />
           </div>
           <div class="img-wrapper2">
             <img src="../assets/characters/character4.png" />
           </div>
         </div>
-        <div class="portfolio-box" id="box1">
-          <p @click="showPortfolio()">나의 포트폴리오 한눈에 보기</p>
+        <div @click="showPortfolio()" class="portfolio-box" id="box1">
+          <p>나의 포트폴리오 한눈에 보기</p>
         </div>
-        <div class="portfolio-box not-show" id="box2">
-          <p @click="notShowPortfolio()">만큼 투자했어요</p>
+        <div
+          v-if="totalInvest > 1000 && totalInvest < 3000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/cookie.png" />
+          <p>과자만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest >= 3000 && totalInvest <= 5000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/coffee.png" />
+          <p>커피만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 5000 && totalInvest < 14000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/food.png" />
+          <p>점심만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 14000 && totalInvest <= 25000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/chicken.png" />
+          <p>치킨만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 25000 && totalInvest <= 50000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/pizza.png" />
+          <p>피자만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 50000 && totalInvest <= 100000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/ktx.png" />
+          <p>KTX 티켓만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 100000 && totalInvest <= 300000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/earphone.png" />
+          <p>무선 이어폰만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 300000 && totalInvest <= 500000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/smartwatch.png" />
+          <p>스마트 워치만큼 투자했어요</p>
+        </div>
+        <div
+          v-else-if="totalInvest > 500000 && totalInvest <= 700000"
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/allowance.png" />
+          <p>한 달 용돈만큼 투자했어요</p>
+        </div>
+        <div
+          v-else
+          @click="notShowPortfolio()"
+          class="portfolio-box not-show"
+          id="box2"
+        >
+          <img src="../assets/steakers/travel.png" />
+          <p>여행 경비만큼 투자했어요</p>
         </div>
         <div class="stocks-wrapper">
           <div class="title">
@@ -171,6 +258,11 @@ export default {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          datalabels: {
+            display: true,
+          },
+        },
       },
       show: 1,
     };
@@ -192,10 +284,6 @@ export default {
     },
 
     showPortfolio() {
-      // const content1 = document.querySelector('#page1');
-      // const content2 = document.querySelector('#page2');
-      // content1.classList.add('not-show');
-      // content2.classList.remove('not-show');
       this.show = 0;
 
       const box1 = document.querySelector('#box1');
@@ -206,19 +294,11 @@ export default {
 
     notShowPortfolio() {
       this.show = 1;
-      // const content1 = document.querySelector('#page1');
-      // const content2 = document.querySelector('#page2');
-      // content1.classList.remove('not-show');
-      // content2.classList.add('not-show');
 
       const box1 = document.querySelector('#box1');
       const box2 = document.querySelector('#box2');
       box2.classList.add('not-show');
       box1.classList.remove('not-show');
-    },
-
-    makeChart() {
-      console.log(this.stocks);
     },
   },
 
@@ -240,14 +320,14 @@ export default {
 
     const colors = [
       '#7284fe',
-      '#fcaeae',
+      '#9575cd',
+      '#2e66e1',
+      '#e57373',
       '#d8ef79',
       '#ff8a65',
-      '#2e66e1',
-      '#9575cd',
+      '#fcaeae',
       '#e6ee9c',
       '#c8d8ff',
-      '#e57373',
       '#b0bec5',
       '#d7ccc8',
     ];
