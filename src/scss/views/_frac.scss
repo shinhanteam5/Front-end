@@ -136,3 +136,138 @@ div.img-wrapper {
     }
   }
 }
+
+div.hasStock {
+  height: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3px 0px;
+  .main-contents {
+    width: 100%;
+    border-top: 2px solid $light-grey;
+    padding-top: 35px;
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    .contents-col1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: $noto-sans;
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 500;
+      h1 {
+        font-weight: 600;
+        font-size: 26px;
+        margin: 8px 0px;
+      }
+      h3 {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        span {
+          margin-right: 3px;
+          &.red {
+            color: $thick-red;
+          }
+          &.blue {
+            color: $blue;
+          }
+        }
+      }
+    }
+    .img-wrapper2 {
+      img {
+        width: 145px;
+      }
+    }
+  }
+  div.portfolio-box {
+    cursor: pointer;
+    background-color: $light-purple;
+    color: black;
+    border-radius: 10px;
+    margin: 20px 0px;
+    padding: 20px 66px;
+    width: 50%;
+    text-align: center;
+    font-family: $noto-sans;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  div.stocks-wrapper {
+    padding: 18px 20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    div.title {
+      display: flex;
+      justify-content: space-between;
+      font-family: $noto-sans;
+      font-size: 19px;
+      font-weight: 600;
+      button {
+        cursor: pointer;
+        font-family: $noto-sans;
+        font-weight: 500;
+        background-color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid lightgrey;
+      }
+    }
+    ul.stocks-list {
+      margin: 14px 0px;
+      li#stock {
+        cursor: pointer;
+        margin: 20px 0px;
+        padding: 18px;
+        font-family: $noto-sans;
+        font-size: 16px;
+        box-shadow: 1px 5px 5px 3px lightgrey;
+        border-radius: 10px;
+        .stock-row1 {
+          margin-bottom: 10px;
+          display: flex;
+          justify-content: space-between;
+          p {
+            &#stock-name {
+              font-size: 15px;
+              font-weight: 600;
+            }
+            &#invest-amount {
+              font-weight: 600;
+            }
+          }
+        }
+        .stock-row2 {
+          display: flex;
+          justify-content: space-between;
+          font-family: $noto-sans;
+          p#stock-share {
+            font-size: 13px;
+            color: grey;
+          }
+          div {
+            display: flex;
+            p {
+              font-size: 14px;
+              font-weight: 500;
+              margin: 0px 3px;
+              &.red {
+                color: $thick-red;
+              }
+              &.blue {
+                color: $blue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

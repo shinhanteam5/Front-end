@@ -36,20 +36,61 @@
         />
       </div>
       <!-- 보유 주식 있는 경우 -->
-      <div v-else>
+      <div v-else class="hasStock">
         <div class="main-contents">
           <div class="contents-col1">
             <p>조수진 님의</p>
             <p>소수점 투자 현황입니다</p>
             <h1>{{ totalInvest }}원</h1>
             <h3>
-              <span>{{ totalEarn }}</span>
-              <span>{{ totalRate }}</span>
+              <span v-if="totalEarn > 0" class="red">▲ {{ totalEarn }}원 </span>
+              <span v-else class="blue">▼{{ totalEarn }}원 </span>
+              <span v-if="totalRate > 0" class="red"> (+{{ totalRate }}%)</span>
+              <span v-else class="blue"> (-{{ totalRate }}%)</span>
             </h3>
-            <div class="img-wrapper">
-              <img src="../assets/characters/character6.png" />
-            </div>
           </div>
+          <div class="img-wrapper2">
+            <img src="../assets/characters/character6.png" />
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <p>나의 포트폴리오 한눈에 보기</p>
+        </div>
+        <div class="stocks-wrapper">
+          <div class="title">
+            <div>보유 주식</div>
+            <button>수익금액순</button>
+          </div>
+          <ul class="stocks-list">
+            <li id="stock" v-for="stock in stocks">
+              <div class="stock-row1">
+                <p id="stock-name">{{ stock.stock_name }}</p>
+                <p v-if="stock.earn_rate > 1" id="invest-amount" class="red">
+                  {{ stock.invest_amount }}원
+                </p>
+                <p v-else id="invest-amount" class="blue">
+                  {{ stock.invest_amount }}원
+                </p>
+              </div>
+              <div class="stock-row2">
+                <p id="stock-share">{{ stock.stock_share }}주</p>
+                <div>
+                  <p v-if="stock.earn_rate > 1" class="red" id="earn-amount">
+                    {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+                  </p>
+                  <p v-else class="blue" id="earn-amount">
+                    {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+                  </p>
+                  <p v-if="stock.earn_rate > 1" class="red" id="earn-rate">
+                    {{ stock.earn_rate }}%
+                  </p>
+                  <p v-else class="blue" id="earn-rate">
+                    {{ stock.earn_rate }}%
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
