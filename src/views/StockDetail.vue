@@ -9,12 +9,10 @@
         <div class="stock-name">
           {{ detail[0].name }}
         </div>
-        <div class="stock-current-price">
-          {{ detail[0].current_price }}
-        </div>
+        <div class="stock-current-price">{{ detail[0].current_price }}원</div>
         <div class="stock-earn">
           <span v-if="detail[0].earn > 0">+</span>
-          {{ detail[0].earn }} ({{ detail[0].earn_rate }}%) 오늘
+          {{ detail[0].earn }}원 ({{ detail[0].earn_rate }}%) 오늘
         </div>
       </div>
 
@@ -60,9 +58,9 @@
             <div class="bad" :style="'width:' + bad + '%'"></div>
           </div>
           <div class="percents">
-            <p class="good">긍정{{ good }}%</p>
-            <p class="soso">중립{{ soso }}%</p>
-            <p class="bad">부정{{ bad }}%</p>
+            <p class="good">긍정 {{ good }}%</p>
+            <p class="soso">중립 {{ soso }}%</p>
+            <p class="bad">부정 {{ bad }}%</p>
           </div>
         </section>
       </div>
@@ -102,16 +100,6 @@ import ExpertComment from '../components/ExpertComment';
 var ctx = document.getElementById('myChart');
 console.log('sd', ctx);
 import axios from 'axios';
-
-// const config = {
-//   type: 'line',
-//   data,
-//   options: {}
-// };
-// var myChart = new Chart(
-//     document.getElementById('myChart'),
-//     config
-//   );
 
 export default {
   name: 'App',
@@ -182,25 +170,28 @@ export default {
       .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}/news`)
       .then((response) => {
         response.data.forEach((item) => {
-          var time = item.tstamp;
-          var month = time.substr(0, 2) + '월';
-          var day = time.substr(2, 5) + '일';
+          let time = item.tstamp;
+          let month = time.substr(0, 2) + '월';
+          let day = time.substr(2, 5) + '일';
 
-          var news = {
+          let news = {
             content: item.content,
             tstamp: month + day,
           };
           this.news.push(news);
         });
       });
-    var random1 = Math.floor(Math.random() * 101);
-    var random2 = Math.floor(Math.random() * 101);
+
+    let a;
+    let b;
+    let random1 = Math.floor(Math.random() * 101);
+    let random2 = Math.floor(Math.random() * 101);
     if (random1 > random2) {
-      var a = random2;
-      var b = random1;
+      a = random2;
+      b = random1;
     } else {
-      var b = random2;
-      var a = random1;
+      b = random2;
+      a = random1;
     }
     this.good = a;
     this.bad = b;
