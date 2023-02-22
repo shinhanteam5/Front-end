@@ -51,12 +51,12 @@
 <style lang="scss" scoped>
 .bar{
     position:absolute;
-    top:1000px;
+    top:800px;
 }
 p{
     left: 40px;
     position:absolute;
-    top:950px;
+    top:750px;
     font-size: 25px;
     font-family: 'Noto Sans KR';
     font-weight: 500;

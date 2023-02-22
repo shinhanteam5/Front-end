@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>전문가의견</p>
+    <p>오늘의 숫자는: {{ showName }}</p>
   </div>
 </template>
   
@@ -14,11 +15,20 @@
       }
     },
     computed: {
-            // showName() {
-            // console.log('실행됐음!');
-            // if (this.myName === '') return '';
-            // return '정' + this.myName;},
-            },
+            showName() {
+              var random1 = Math.floor(Math.random() * 101);
+              var random2 = Math.floor(Math.random() * 101);
+              if(random1> random2){
+                var a = random2
+                var b = random1
+              }
+              else{
+                var b = random2
+                var a = random1
+              }
+              console.log(a,b-a,100-b)
+    }
+  },
     watch: {
             myData(newValue, oldValue) {
             },

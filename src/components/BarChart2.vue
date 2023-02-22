@@ -51,12 +51,12 @@ export default {
 <style lang="scss" scoped>
 .bar{
   position:absolute;
-  top:1300px
+  top:1100px
 }
 p{
   left: 40px;
   position:absolute;
-  top:1250px;
+  top:1050px;
   font-size: 25px;
   font-family: 'Noto Sans KR';
   font-weight: 500;
