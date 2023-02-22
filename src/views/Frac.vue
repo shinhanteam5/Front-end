@@ -160,11 +160,11 @@ export default {
       totalInvest: 0, // 총 투자 금액
       totalRate: 0, // 총 수익률
       data: {
-        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+        labels: [],
         datasets: [
           {
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-            data: [40, 20, 80, 10],
+            backgroundColor: [],
+            data: [],
           },
         ],
       },
@@ -216,14 +216,18 @@ export default {
       box2.classList.add('not-show');
       box1.classList.remove('not-show');
     },
+
+    makeChart() {
+      console.log(this.stocks);
+    },
   },
 
-  created() {
+  async created() {
     const userId = 1;
     const frm = new FormData();
     frm.append('user_id', userId);
 
-    axios
+    await axios
       .get(`http://127.0.0.1:8000/api/portfolio/${userId}`, frm)
       .then((response) => {
         // console.log(response.data[0]);
@@ -233,6 +237,22 @@ export default {
         this.totalRate = response.data[0].total_rate;
       })
       .catch((error) => console.log(error));
+
+    const colors = [
+      '#7284fe',
+      '#fcaeae',
+      '#d8ef79',
+      '#ff7a02',
+      '#2e66e1',
+      '#4707ff',
+      '#50e04f',
+      '#c8d8ff',
+    ];
+    this.stocks.forEach((stock, index) => {
+      this.data.labels.push(stock.stock_name);
+      this.data.datasets[0].data.push(stock.invest_amount);
+      this.data.datasets[0].backgroundColor.push(colors[index]);
+    });
   },
 };
 </script>
