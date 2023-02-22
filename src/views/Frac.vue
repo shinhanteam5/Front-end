@@ -74,10 +74,16 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       hasInvestment: false,
+      stocks: [], // 주식
+      totalEarn: 0, // 총 수익
+      totalInvest: 0, // 총 투자 금액
+      totalRate: 0, // 총 수익률
     };
   },
 
@@ -95,6 +101,23 @@ export default {
       modal.classList.remove('show');
       background.classList.remove('be-darker');
     },
+  },
+
+  created() {
+    const userId = 1;
+    const frm = new FormData();
+    frm.append('user_id', userId);
+
+    axios
+      .get(`http://127.0.0.1:8000/api/portfolio/${userId}`, frm)
+      .then((response) => {
+        // console.log(response.data[0]);
+        this.stocks = response.data[0].stocks; // 보유 주식
+        this.totalEarn = response.data[0].total_earn;
+        this.totalInvest = response.data[0].total_invest;
+        this.totalRate = response.data[0].total_rate;
+      })
+      .catch((error) => console.log(error));
   },
 };
 </script>
