@@ -37,7 +37,7 @@
       </div>
       <!-- 보유 주식 있는 경우 -->
       <div v-else class="hasStock">
-        <div class="main-contents">
+        <div class="main-contents" id="page1">
           <div class="contents-col1">
             <p>조수진 님의</p>
             <p>소수점 투자 현황입니다</p>
@@ -53,8 +53,27 @@
             <img src="../assets/characters/character6.png" />
           </div>
         </div>
-        <div class="portfolio-box">
-          <p>나의 포트폴리오 한눈에 보기</p>
+        <div class="main-contents not-show" id="page2">
+          <div class="contents-col1">
+            <p>조수진 님의</p>
+            <p>소수점 투자 현황입니다</p>
+            <h1>{{ totalInvest }}원</h1>
+            <h3>
+              <span v-if="totalEarn > 0" class="red">▲ {{ totalEarn }}원 </span>
+              <span v-else class="blue">▼{{ totalEarn }}원 </span>
+              <span v-if="totalRate > 0" class="red"> (+{{ totalRate }}%)</span>
+              <span v-else class="blue"> (-{{ totalRate }}%)</span>
+            </h3>
+          </div>
+          <div class="img-wrapper2">
+            <img src="../assets/characters/character6.png" />
+          </div>
+        </div>
+        <div class="portfolio-box" id="box1">
+          <p @click="showPortfolio()">나의 포트폴리오 한눈에 보기</p>
+        </div>
+        <div class="portfolio-box not-show" id="box2">
+          <p @click="notShowPortfolio()">만큼 투자했어요</p>
         </div>
         <div class="stocks-wrapper">
           <div class="title">
@@ -157,6 +176,30 @@ export default {
       const background = document.querySelector('.background');
       modal.classList.remove('show');
       background.classList.remove('be-darker');
+    },
+
+    showPortfolio() {
+      const content1 = document.querySelector('#page1');
+      const content2 = document.querySelector('#page2');
+      content1.classList.add('not-show');
+      content2.classList.remove('not-show');
+
+      const box1 = document.querySelector('#box1');
+      const box2 = document.querySelector('#box2');
+      box1.classList.add('not-show');
+      box2.classList.remove('not-show');
+    },
+
+    notShowPortfolio() {
+      const content1 = document.querySelector('#page1');
+      const content2 = document.querySelector('#page2');
+      content1.classList.remove('not-show');
+      content2.classList.add('not-show');
+
+      const box1 = document.querySelector('#box1');
+      const box2 = document.querySelector('#box2');
+      box2.classList.add('not-show');
+      box1.classList.remove('not-show');
     },
   },
 
