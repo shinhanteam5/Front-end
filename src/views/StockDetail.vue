@@ -88,6 +88,7 @@
         >
           구매하기</router-link
         >
+        <button id="sell-btn">매도하기</button>
       </div>
     </div>
   </div>
