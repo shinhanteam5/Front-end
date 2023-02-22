@@ -29,7 +29,7 @@
       <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
       <!-- 리스트 기준 -->
       <section class="category">
-        <ul>
+        <ul class="chart-tab" ref="tab" @click.prevent="setContext">
           <li class="active">상승</li>
           <li>하락</li>
           <li>인기검색</li>
@@ -47,7 +47,7 @@
           <li>거래량</li>
         </ul>
         <!-- 종목들 -->
-        <ul class="stock-list">
+        <ul  v-if="stockContext==='high'" class="stock-list">
           <router-link
             id="router-link"
             :to="{
@@ -67,6 +67,31 @@
             </li>
           </router-link>
         </ul>
+
+
+        <ul  v-if="stockContext==='low'" class="stock-list">
+          <router-link
+            id="router-link"
+            :to="{
+              name: 'StockDetail',
+              query: {
+                stock_code: stock.srtnCd,
+              },
+            }"
+            v-for="(stock, index) in stockList"
+            @click="getDetail(index)"
+          >
+            <li>
+              <div>{{ stock.itmsNm }}</div>
+              <div class="blue">{{ stock.mkp }}</div>
+              <div class="blue">{{ stock.fltRt + '%' }}</div>
+              <div>{{ stock.trqu }}</div>
+            </li>
+          </router-link>
+        </ul>
+
+
+        
       </section>
     </div>
   </div>
@@ -82,11 +107,41 @@ const priceToString = (price) => {
 export default {
   data() {
     return {
+      stockContext:"high",
       stockList: [],
     };
   },
 
   methods: {
+    setContext(ev) {
+      this.chartContext = ev.target.textContent;
+      this.setCrrTab(this.chartContext); // li가 들어감.
+    },
+
+    setCrrTab(crr) {
+      this.$refs.tab.querySelectorAll('li').forEach((item) => {
+        item.classList.remove('active');
+      });
+      this.$refs.tab.querySelectorAll('li').forEach((item) => {
+        if (item.textContent === crr) {
+          item.classList.add('active');
+          // this.imgurl=this.detail[0].this.imageMatch[crr.textContent]
+
+          if(crr==="상승"){
+            this.stockContext="high"
+            this.stockList.sort((a, b) =>{ 
+            return b.fltRt - a.fltRt
+            })
+          }else{
+              this.stockContext="low"
+              this.stockList.sort((a, b) =>{ 
+            return a.fltRt - b.fltRt
+            })
+          }
+
+        }
+      });
+    },
     getDetail(index) {
       const stock_code = String(this.stockList[index].srtnCd);
 
@@ -105,34 +160,51 @@ export default {
     },
   },
 
-  created() {
+  async created() {
+    var url = ""
     const tendency = this.$route.query.filter;
+    console.log(tendency)
+    if (tendency == 1) {
 
-    axios
-      .get(
-        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=30&resultType=json'
-      )
+      url="https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=10&resultType=json&endFltRt=30&beginFltRt=15"
+    
+    } else if (tendency == 2) {
+      url="https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=100&resultType=json&endFltRt=15&beginFltRt=5"
+    
+    } else {
+      url="https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=100&resultType=json&endFltRt=5&beginFltRt=-5"
+    }
+    await axios.get( url)
       .then((response) => {
+        var final = []
         const stockList = response.data.response.body.items.item;
         stockList.forEach((stock) => {
-          console.log(stock);
-          if (tendency == 1) {
-          } else if (tendency == 2) {
-          } else {
-          }
-          this.stockList.push({
-            srtnCd: stock.srtnCd,
-            itmsNm: stock.itmsNm,
-            mkp: priceToString(stock.mkp),
-            fltRt: stock.fltRt,
-            trqu: priceToString(stock.trqu),
-            clpr: stock.clpr,
-            vs: stock.vs,
-          });
-        });
+        final.push({
+        srtnCd: stock.srtnCd,
+        itmsNm: stock.itmsNm,
+        mkp: priceToString(stock.mkp),
+        fltRt: Number(stock.fltRt),
+        trqu: priceToString(stock.trqu),
+        clpr: stock.clpr,
+        vs: stock.vs,
       });
-  },
-};
+
+      final.sort((a, b) =>{ 
+         return b.fltRt - a.fltRt
+  })
+
+  this.stockList=final
+
+  })
+  // console.log("heel",this.stocklist)
+  // this.stockList.sort((a, b) =>{ 
+  // b.fltRt - a.fltRt
+  // })
+})
+
+}
+}
+;
 </script>
 
 <style lang="scss" scoped>
