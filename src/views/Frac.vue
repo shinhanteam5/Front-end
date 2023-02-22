@@ -36,19 +36,21 @@
         />
       </div>
       <!-- 보유 주식 있는 경우 -->
-      <div v-else>
+      <div v-else class="hasStock">
         <div class="main-contents">
           <div class="contents-col1">
             <p>조수진 님의</p>
             <p>소수점 투자 현황입니다</p>
             <h1>{{ totalInvest }}원</h1>
             <h3>
-              <span>{{ totalEarn }}</span>
-              <span>{{ totalRate }}</span>
+              <span v-if="totalEarn > 0" class="red">▲ {{ totalEarn }}원 </span>
+              <span v-else class="blue">▼{{ totalEarn }}원 </span>
+              <span v-if="totalRate > 0" class="red"> (+{{ totalRate }}%)</span>
+              <span v-else class="blue"> (-{{ totalRate }}%)</span>
             </h3>
-            <div class="img-wrapper">
-              <img src="../assets/characters/character6.png" />
-            </div>
+          </div>
+          <div class="img-wrapper2">
+            <img src="../assets/characters/character6.png" />
           </div>
         </div>
       </div>
