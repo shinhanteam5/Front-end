@@ -138,7 +138,7 @@ div#stockList-background > ul.news{
   width: 424px;
   height: 48px;
   left: 40px;
-  top: 1800px;
+  top: 1600px;
   font-size: 25px;
   font-family: 'Noto Sans KR';
   font-weight: 500;
@@ -165,7 +165,7 @@ div#stockList-background > div.expert  {
   width: 424px;
   height: 48px;
   left: 40px;
-  top: 1500px;
+  top: 1300px;
   font-size: 25px;
   font-family: 'Noto Sans KR';
   font-weight: 500;
@@ -204,3 +204,14 @@ div#stockList-background > div.expert  {
 //   width: 300px;
 //   padding-left: 130px;
 // }
+
+div#stockList-background > div:nth-child(16){
+  position: absolute;
+  top: 1850px;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  width: 400px;
+
+  border: 1px solid rgb(0, 0, 0);
+}
