@@ -37,7 +37,7 @@
       </div>
       <!-- 보유 주식 있는 경우 -->
       <div v-else class="hasStock">
-        <div class="main-contents">
+        <div class="main-contents" v-if="show === 1">
           <div class="contents-col1">
             <p>조수진 님의</p>
             <p>소수점 투자 현황입니다</p>
@@ -53,8 +53,19 @@
             <img src="../assets/characters/character6.png" />
           </div>
         </div>
-        <div class="portfolio-box">
-          <p>나의 포트폴리오 한눈에 보기</p>
+        <div class="main-contents" v-else>
+          <div class="contents-col1">
+            <Pie :data="data" :options="options" />
+          </div>
+          <div class="img-wrapper2">
+            <img src="../assets/characters/character4.png" />
+          </div>
+        </div>
+        <div class="portfolio-box" id="box1">
+          <p @click="showPortfolio()">나의 포트폴리오 한눈에 보기</p>
+        </div>
+        <div class="portfolio-box not-show" id="box2">
+          <p @click="notShowPortfolio()">만큼 투자했어요</p>
         </div>
         <div class="stocks-wrapper">
           <div class="title">
@@ -133,14 +144,35 @@
 
 <script>
 import axios from 'axios';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'vue-chartjs';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
 export default {
+  components: {
+    Pie,
+  },
+
   data() {
     return {
       stocks: [], // 주식
       totalEarn: 0, // 총 수익
       totalInvest: 0, // 총 투자 금액
       totalRate: 0, // 총 수익률
+      data: {
+        labels: [],
+        datasets: [
+          {
+            backgroundColor: [],
+            data: [],
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+      show: 1,
     };
   },
 
@@ -158,14 +190,44 @@ export default {
       modal.classList.remove('show');
       background.classList.remove('be-darker');
     },
+
+    showPortfolio() {
+      // const content1 = document.querySelector('#page1');
+      // const content2 = document.querySelector('#page2');
+      // content1.classList.add('not-show');
+      // content2.classList.remove('not-show');
+      this.show = 0;
+
+      const box1 = document.querySelector('#box1');
+      const box2 = document.querySelector('#box2');
+      box1.classList.add('not-show');
+      box2.classList.remove('not-show');
+    },
+
+    notShowPortfolio() {
+      this.show = 1;
+      // const content1 = document.querySelector('#page1');
+      // const content2 = document.querySelector('#page2');
+      // content1.classList.remove('not-show');
+      // content2.classList.add('not-show');
+
+      const box1 = document.querySelector('#box1');
+      const box2 = document.querySelector('#box2');
+      box2.classList.add('not-show');
+      box1.classList.remove('not-show');
+    },
+
+    makeChart() {
+      console.log(this.stocks);
+    },
   },
 
-  created() {
+  async created() {
     const userId = 1;
     const frm = new FormData();
     frm.append('user_id', userId);
 
-    axios
+    await axios
       .get(`http://127.0.0.1:8000/api/portfolio/${userId}`, frm)
       .then((response) => {
         // console.log(response.data[0]);
@@ -175,6 +237,25 @@ export default {
         this.totalRate = response.data[0].total_rate;
       })
       .catch((error) => console.log(error));
+
+    const colors = [
+      '#7284fe',
+      '#fcaeae',
+      '#d8ef79',
+      '#ff8a65',
+      '#2e66e1',
+      '#9575cd',
+      '#e6ee9c',
+      '#c8d8ff',
+      '#e57373',
+      '#b0bec5',
+      '#d7ccc8',
+    ];
+    this.stocks.forEach((stock, index) => {
+      this.data.labels.push(stock.stock_name);
+      this.data.datasets[0].data.push(stock.invest_amount);
+      this.data.datasets[0].backgroundColor.push(colors[index]);
+    });
   },
 };
 </script>

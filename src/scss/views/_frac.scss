@@ -197,6 +197,9 @@ div.hasStock {
     font-family: $noto-sans;
     font-weight: 600;
     font-size: 16px;
+    &.not-show {
+      display: none;
+    }
   }
 
   div.stocks-wrapper {
