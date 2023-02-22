@@ -67,12 +67,11 @@
         </section>
       </div>
 
-      <ul class="introduce news">
+      <ul class="news">
         <p>종목뉴스</p>
-        <br />
-        <li v-for="(item, i) in news" :key="item.content">
-          <p>{{ item.content }}</p>
-          <p>{{ item.tstamp }}</p>
+        <li id="news-item" v-for="(item, i) in news" :key="item.content">
+          <p id="title">{{ item.content }}</p>
+          <p id="date">{{ item.tstamp }}</p>
         </li>
       </ul>
 
