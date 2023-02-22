@@ -47,7 +47,7 @@
           <li>거래량</li>
         </ul>
         <!-- 종목들 -->
-        <ul class="stock-list">
+        <ul  v-if="stockContext==='high'" class="stock-list">
           <router-link
             id="router-link"
             :to="{
@@ -67,6 +67,31 @@
             </li>
           </router-link>
         </ul>
+
+
+        <ul  v-if="stockContext==='low'" class="stock-list">
+          <router-link
+            id="router-link"
+            :to="{
+              name: 'StockDetail',
+              query: {
+                stock_code: stock.srtnCd,
+              },
+            }"
+            v-for="(stock, index) in stockList"
+            @click="getDetail(index)"
+          >
+            <li>
+              <div>{{ stock.itmsNm }}</div>
+              <div class="blue">{{ stock.mkp }}</div>
+              <div class="blue">{{ stock.fltRt + '%' }}</div>
+              <div>{{ stock.trqu }}</div>
+            </li>
+          </router-link>
+        </ul>
+
+
+        
       </section>
     </div>
   </div>
@@ -82,6 +107,7 @@ const priceToString = (price) => {
 export default {
   data() {
     return {
+      stockContext:"high",
       stockList: [],
     };
   },
@@ -93,14 +119,26 @@ export default {
     },
 
     setCrrTab(crr) {
-      console.log(crr)
       this.$refs.tab.querySelectorAll('li').forEach((item) => {
         item.classList.remove('active');
       });
       this.$refs.tab.querySelectorAll('li').forEach((item) => {
         if (item.textContent === crr) {
-          // this.imgurl=this.detail[0].this.imageMatch[crr.textContent]
           item.classList.add('active');
+          // this.imgurl=this.detail[0].this.imageMatch[crr.textContent]
+
+          if(crr==="상승"){
+            this.stockContext="high"
+            this.stockList.sort((a, b) =>{ 
+            return b.fltRt - a.fltRt
+            })
+          }else{
+              this.stockContext="low"
+              this.stockList.sort((a, b) =>{ 
+            return a.fltRt - b.fltRt
+            })
+          }
+
         }
       });
     },
