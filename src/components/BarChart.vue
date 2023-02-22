@@ -1,7 +1,4 @@
 <template>
-     <li v-for="item in listData" v-bind:key="item.id">
-      <b>{{ item}}</b>
-    </li>
     <Bar
     class="bar"
       id="my-chart-id"
@@ -24,7 +21,7 @@
       return {
         chartData: {
           labels: [ 'January', 'February', 'March' ],
-          datasets: [ { data: [, 20, 12] } ]
+          datasets: [ { data: [100,0,0] } ]
         },
         chartOptions: {
           responsive: true
@@ -32,6 +29,12 @@
       }
     }
     ,
+    created(){
+        this.chartData.datasets[0].data[0]=this.listData[0].profit1
+        this.chartData.datasets[0].data[1]=this.listData[0].profit2
+        this.chartData.datasets[0].data[2]=this.listData[0].profit3
+
+    }
   }
   </script>
 
