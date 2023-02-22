@@ -31,6 +31,21 @@
         <div class="info">{{ detail[0].info }}</div>
       </div>
 
+      <ul class="bar">
+        성장성(매출액, 당기순이익)
+      <li style="height:100%;"><span></span></li>
+      <li style="height:70%;"><span></span></li>
+      <li style="height:30%;"><span></span></li>
+      </ul>
+
+      <ul class="news">
+        <p>종목뉴스</p> <br>
+            <li v-for="(item ,i) in news" :key="item.content">
+                <p>{{item.content}}</p>
+                <p>  {{item.tstamp}}</p>
+            </li>
+        </ul>
+ 
       <div class="modal-row3">
         <router-link
           id="buy-btn"
@@ -51,6 +66,8 @@
 </template>
 
 <script>
+
+
 import axios from 'axios';
 
 export default {
@@ -59,12 +76,14 @@ export default {
       imgurl: '',
       chartContext: '1주',
       detail: [{}],
+      news: [],
       imageMatch: {
         '1주': 'week',
         한달: 'month3',
         '1년': 'year',
         '3년': 'year3',
       },
+
     };
   },
 
@@ -106,12 +125,33 @@ export default {
     axios
       .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}`)
       .then((response) => {
-        console.log(response.data);
         this.detail = response.data;
         this.imgurl = response.data[0].week;
       });
+
+      axios
+      .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}/news`)
+      .then((response) => {
+          response.data.forEach(item=>{
+            var time = item.tstamp
+            var month = time.substr(0,2)+"월"
+            var day = time.substr(2,5)+"일"
+  
+           var news = {
+              content:item.content,
+              tstamp:month+day
+           }
+           this.news.push(news)
+          })
+      
+      });
+      console.log(this.news)
+
+
   },
 };
+
+
 </script>
 
 <style lang="scss" scoped>
