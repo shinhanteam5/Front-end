@@ -40,6 +40,7 @@
               name: detail[0].name,
               user_id: 1,
               stock_code: detail[0].stock_code,
+              current_price: detail[0].current_price,
             },
           }"
         >
@@ -106,7 +107,6 @@ export default {
     axios
       .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}`)
       .then((response) => {
-        console.log(response.data);
         this.detail = response.data;
         this.imgurl = response.data[0].week;
       });

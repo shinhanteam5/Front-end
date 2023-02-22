@@ -8,7 +8,11 @@
       <!-- https://velog.io/@imyourgenie/Vue.js-%EC%B5%9C%EC%A2%85-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9E%85%EB%A0%A5-%ED%8F%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0 -->
       <div class="form-wrapper">
         <form action="">
-          <input v-model="shownMoney" placeholder="구매금액입력" />
+          <input
+            id="inputMoney"
+            v-model="shownMoney"
+            placeholder="구매금액입력"
+          />
           <p v-if="inputMoney === 0">천원 단위로 구매 가능합니다.</p>
           <p v-else-if="inputMoney > 0 && inputMoney < 3000">
             <img src="../assets/steakers/cookie.png" />
@@ -112,13 +116,15 @@
           </div>
         </section>
         <!-- 구매하기 버튼 -->
-        <button id="buy-btn">구매하기</button>
+        <button id="buy-btn" @click="buy()">구매하기</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 const priceToString = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
@@ -126,7 +132,6 @@ const priceToString = (price) => {
 export default {
   data() {
     return {
-      currentValue: 0, // 현재가
       inputMoney: 0,
       shownMoney: '',
       balance: 1000000, // 잔액
@@ -135,17 +140,44 @@ export default {
       shownCharge: '-',
       shareNumber: 0, // 주식수
       shownShareNumber: '-',
+      currnetPrice: 0,
+      frm: new FormData(),
     };
   },
 
   methods: {
+    buy() {
+      this.frm.append('invest_amount', Number(this.inputMoney));
+      this.frm.append('stock_share', Number(this.shareNumber));
+
+      // for (let key of this.frm.keys()) {
+      //   console.log(key, ':', this.frm.get(key), ':', typeof key);
+      // }
+
+      console.log(this.frm);
+
+      axios
+        .post('http://127.0.0.1:8000/api/stocklist/buy', this.frm)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
+    },
+
+    makeFormData(name, stock_code) {
+      this.frm.append('stock_name', name);
+      this.frm.append('stock_code', Number(stock_code));
+      this.frm.append('portfolio_id', Number(1));
+      this.frm.append('earn_rate', Number(0));
+    },
+
     updateCharge() {
-      this.charge = this.inputMoney * 0.01;
+      this.charge = (this.inputMoney * 0.01).toFixed(2);
       this.shownCharge = String(this.charge) + '원';
     },
 
     updateShareNumber() {
-      this.shareNumber = this.inputMoney / currentValue;
+      this.shareNumber = (this.inputMoney / this.currnetPrice).toFixed(2);
       this.shownShareNumber = String(this.shareNumber) + '주';
     },
 
@@ -163,6 +195,7 @@ export default {
       this.showInputMoney();
       this.updateBalance();
       this.updateCharge();
+      this.updateShareNumber();
     },
 
     addNumber(number) {
@@ -170,6 +203,7 @@ export default {
       this.showInputMoney();
       this.updateBalance();
       this.updateCharge();
+      this.updateShareNumber();
     },
 
     deleteMoney() {
@@ -177,6 +211,7 @@ export default {
       this.showInputMoney();
       this.updateBalance();
       this.updateCharge();
+      this.updateShareNumber();
     },
 
     resetMoney() {
@@ -195,8 +230,11 @@ export default {
   },
 
   created() {
+    const { name, user_id, stock_code, current_price } = this.$route.query;
+    this.makeFormData(name, stock_code);
+    this.currnetPrice = current_price;
+
     this.shownBalance = priceToString(this.balance) + '원';
-    console.log(this.$route.query);
   },
 };
 </script>
