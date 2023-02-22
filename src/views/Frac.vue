@@ -242,11 +242,14 @@ export default {
       '#7284fe',
       '#fcaeae',
       '#d8ef79',
-      '#ff7a02',
+      '#ff8a65',
       '#2e66e1',
-      '#4707ff',
-      '#50e04f',
+      '#9575cd',
+      '#e6ee9c',
       '#c8d8ff',
+      '#e57373',
+      '#b0bec5',
+      '#d7ccc8',
     ];
     this.stocks.forEach((stock, index) => {
       this.data.labels.push(stock.stock_name);
