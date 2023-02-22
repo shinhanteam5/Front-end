@@ -1,4 +1,7 @@
 <template>
+    <p>성장성(매출액, 당기순이익)</p>
+    <h2>{{ listData[0].profit1 }}</h2>
+    
     <Bar
     class="bar"
       id="my-chart-id"
@@ -20,8 +23,8 @@
     data() {
       return {
         chartData: {
-          labels: [ 'January', 'February', 'March' ],
-          datasets: [ { data: [100,0,0] } ]
+          labels: [ '2019', '2020', '2021' ],
+          datasets: [ { data: [10,1,0] } ]
         },
         chartOptions: {
           responsive: true
@@ -29,11 +32,10 @@
       }
     }
     ,
-    created(){
+    beforeCreated(){
         this.chartData.datasets[0].data[0]=this.listData[0].profit1
         this.chartData.datasets[0].data[1]=this.listData[0].profit2
         this.chartData.datasets[0].data[2]=this.listData[0].profit3
-
     }
   }
   </script>
@@ -42,5 +44,13 @@
 .bar{
     position:absolute;
     top:1000px
+}
+p{
+    left: 40px;
+    position:absolute;
+    top:1000px;
+    font-size: 25px;
+    font-family: 'Noto Sans KR';
+    font-weight: 500;
 }
 </style>

@@ -31,12 +31,6 @@
         <div class="info">{{ detail[0].info }}</div>
       </div>
 
-      <ul class="bar">
-        성장성(매출액, 당기순이익)
-      <li style="height:100%;"><span></span></li>
-      <li style="height:70%;"><span></span></li>
-      <li style="height:30%;"><span></span></li>
-      </ul>
 
       <ul class="news">
         <p>종목뉴스</p> <br>
