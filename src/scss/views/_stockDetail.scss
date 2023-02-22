@@ -1,4 +1,5 @@
 div.img-wrapper {
+  height: auto;
   div#stockList-background {
     background-color: white;
     height: auto;
@@ -6,38 +7,26 @@ div.img-wrapper {
 }
 
 .stock-name {
-  position: absolute;
-  left: 52px;
-  top: 95px;
   font-family: $noto-sans;
   font-weight: 500;
   font-size: 15px;
 }
 
 .stock-current-price {
-  position: absolute;
-  left: 52px;
-  top: 115px;
   font-family: $noto-sans;
   font-weight: 500;
   font-size: 35px;
 }
 
 .stock-earn {
-  position: absolute;
-  left: 50px;
-  top: 160px;
   font-size: 12px;
   font-weight: 500;
   font-family: $noto-sans;
-  color: red;
+  color: $thick-red;
 }
 
 div.chart-button {
-  position: absolute;
   width: 100%;
-  left: 0px;
-  top: 174px;
   text-align: center;
   margin: 12px 0px;
   img {
@@ -61,24 +50,6 @@ div.chart-button {
   }
 }
 
-div.chart-wrapper {
-  position: static;
-}
-
-#bar-chart-1 {
-  position: relative;
-}
-
-.chartbutton > .tab {
-  text-align: center;
-  font-size: 16px;
-  font-family: 'Noto Sans KR';
-}
-.chartbutton > .tab > li {
-  display: inline-block;
-  margin: 0 20px;
-}
-
 div.introduce {
   font-family: $noto-sans;
   font-weight: 600;
@@ -94,9 +65,10 @@ div.introduce {
   }
 }
 
-#stockList-background > div.modal-row3 {
+// 구매 버튼
+div.modal-row3 {
   position: fixed;
-  bottom: 62px;
+  bottom: 54px;
   width: 424px;
   height: 50px;
   background-color: white;
@@ -117,55 +89,8 @@ div.introduce {
     font-weight: 600;
   }
 }
-//당기순이익
-div#stockList-background > div:nth-child(7) {
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 500px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  .info {
-    margin-top: 10px;
-    width: 340px;
-    line-height: 150%;
-    font-family: 'Noto Sans KR';
-    font-size: 13px;
-    font-weight: 300;
-  }
-}
-//뉴스
-div#stockList-background > ul.news {
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 1600px;
-  font-size: 25px;
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  margin-top: 20px;
 
-  li {
-    font-size: 13px;
-    line-height: 150%;
-    font-weight: 300;
-    p:nth-child(2) {
-      font-size: 11px;
-      color: #1d232f;
-    }
-  }
-}
-
-div#stockList-background > div.expert {
-  display: block;
-  position: absolute;
-  width: 424px;
-  height: 48px;
-  left: 40px;
-  top: 1300px;
+div.expert {
   font-size: 25px;
   font-family: 'Noto Sans KR';
   font-weight: 500;
@@ -199,7 +124,3 @@ div#stockList-background > div.expert {
     background-color: rgb(142, 174, 222);
   }
 }
-// div#stockList-background > div.expert > div{
-//   width: 300px;
-//   padding-left: 130px;
-// }

@@ -40,7 +40,13 @@
         />
       </div>
 
-      <BarChart2 :list-data="detail" :key="detail.length" :isLoaded="barLoad" />
+      <div class="chart-wrapper">
+        <BarChart2
+          :list-data="detail"
+          :key="detail.length"
+          :isLoaded="barLoad"
+        />
+      </div>
 
       <div class="introduce expert">
         <p>전문가의견</p>

@@ -64,9 +64,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../scss/main.scss';
-.chart-wrapper {
-  position: relative;
-}
 p.grow {
   font-family: $noto-sans;
   font-weight: 600;
