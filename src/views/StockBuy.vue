@@ -117,6 +117,44 @@
         </section>
         <!-- 구매하기 버튼 -->
         <button id="buy-btn" @click="buy()">구매하기</button>
+
+        <!-- modal  -->
+        <div class="modal-wrapper">
+          <div id="close">
+            <svg
+              @click="closeModal()"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+          <div class="modal-row1">소수점 투자</div>
+          <div class="modal-row2">
+            <img src="../assets/characters/character3.png" alt="" />
+            <img
+              class="small"
+              src="../assets/characters/character4.png"
+              alt=""
+            />
+          </div>
+          <div class="modal-row3">
+            <router-link class="link-btn" id="first" to="/frac/select"
+              >종목 추천받기</router-link
+            >
+            <router-link class="link-btn" to="/frac/search"
+              >종목 검색하기</router-link
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -147,14 +185,12 @@ export default {
 
   methods: {
     buy() {
+      if (this.inputMoney === 0) {
+        return;
+      }
+
       this.frm.append('invest_amount', Number(this.inputMoney));
       this.frm.append('stock_share', Number(this.shareNumber));
-
-      // for (let key of this.frm.keys()) {
-      //   console.log(key, ':', this.frm.get(key), ':', typeof key);
-      // }
-
-      console.log(this.frm);
 
       axios
         .post('http://127.0.0.1:8000/api/stocklist/buy', this.frm)
@@ -165,7 +201,7 @@ export default {
     },
 
     makeFormData(name, stock_code) {
-      this.frm.append('stock_name', name);
+      this.frm.append('stock_name', String(name));
       this.frm.append('stock_code', Number(stock_code));
       this.frm.append('portfolio_id', Number(1));
       this.frm.append('earn_rate', Number(0));
