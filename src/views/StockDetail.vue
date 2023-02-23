@@ -4,7 +4,7 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <router-link v-if="pre_page === 'home'" id="back-btn" to="/frac">
+      <router-link v-if="pre_page === 'home'" id="back-btn" :to="frac">
         <img
           href=""
           id="top-bar"
@@ -12,7 +12,16 @@
           alt=""
         />
       </router-link>
-      <router-link v-else id="back-btn" to="/frac/stockList">
+      <router-link
+        v-else
+        id="back-btn"
+        :to="{
+          name: 'StockList',
+          query: {
+            filter: this.filterNumber,
+          },
+        }"
+      >
         <img
           href=""
           id="top-bar"
@@ -126,7 +135,7 @@ export default {
   components: { BarChart, BarChart2, ExpertComment },
   data() {
     return {
-      pre_page: '',
+      filterNumber: 0,
       good: 0,
       bad: 0,
       soso: 0,
@@ -148,7 +157,7 @@ export default {
 
   methods: {
     routerTest() {
-      console.log('test');
+      // console.log('test');
       this.$router.push({
         name: 'Params',
         // params: { pathMatch: "test" },
@@ -180,8 +189,7 @@ export default {
 
   created() {
     const stock_code = this.$route.query.stock_code;
-    const pre_page = this.$route.query.pre_page;
-    this.pre_page = pre_page;
+    this.filterNumber = this.$route.query.filter;
 
     axios
       .get(`http://34.64.58.230/api/stocklist/${stock_code}`)

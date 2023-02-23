@@ -65,6 +65,7 @@
               name: 'StockDetail',
               query: {
                 stock_code: stock.srtnCd,
+                filter: this.filterNumber,
               },
             }"
             v-for="(stock, index) in stockList"
@@ -118,6 +119,7 @@ export default {
       stockContext: 'high',
       stockList: [],
       stockList2: [],
+      filterNumber: 0,
     };
   },
 
@@ -177,6 +179,9 @@ export default {
     let url = '';
     let url2 = '';
     const tendency = this.$route.query.filter;
+    this.filterNumber = tendency;
+
+    console.log(this.$route.query);
 
     if (tendency == 1) {
       this.filter = '필터 : 공격형';
