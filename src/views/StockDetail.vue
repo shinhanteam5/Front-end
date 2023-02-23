@@ -4,7 +4,7 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <router-link v-if="pre_page === 'home'" id="back-btn" :to="frac">
+      <router-link v-if="pre_page === 'home'" id="back-btn" to="/frac">
         <img
           href=""
           id="top-bar"
@@ -136,6 +136,7 @@ export default {
   data() {
     return {
       filterNumber: 0,
+      pre_page: '',
       good: 0,
       bad: 0,
       soso: 0,
@@ -188,7 +189,9 @@ export default {
   },
 
   created() {
+    console.log(this.$route.query);
     const stock_code = this.$route.query.stock_code;
+    this.pre_page = this.$route.query.pre_page;
     this.filterNumber = this.$route.query.filter;
 
     axios
