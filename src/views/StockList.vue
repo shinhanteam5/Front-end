@@ -183,7 +183,7 @@ export default {
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=-5&beginFltRt=-15';
     } else {
       url =
-        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=5&beginFltRt=-5';
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=100&resultType=json&endFltRt=5&beginFltRt=-5';
     }
 
     await axios.get(url).then((response) => {
