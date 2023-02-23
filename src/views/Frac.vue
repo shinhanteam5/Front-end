@@ -48,9 +48,11 @@
           <div class="contents-col1">
             <p>조수진 님의</p>
             <p>소수점 투자 현황입니다</p>
-            <h1>{{ totalInvest }}원</h1>
+            <h1>{{ priceToString(totalInvest) }}원</h1>
             <h3>
-              <span v-if="totalEarn > 0" class="red">▲ {{ totalEarn }}원 </span>
+              <span v-if="totalEarn > 0" class="red"
+                >▲ {{ priceToString(totalEarn) }}원
+              </span>
               <span v-else class="blue">▼{{ totalEarn }}원 </span>
               <span v-if="totalRate > 0" class="red"> (+{{ totalRate }}%)</span>
               <span v-else class="blue"> (-{{ totalRate }}%)</span>
@@ -170,20 +172,28 @@
                 <div class="stock-row1">
                   <p id="stock-name">{{ stock.stock_name }}</p>
                   <p v-if="stock.earn_rate > 1" id="invest-amount" class="red">
-                    {{ stock.invest_amount }}원
+                    {{ priceToString(stock.invest_amount) }}원
                   </p>
                   <p v-else id="invest-amount" class="blue">
-                    {{ stock.invest_amount }}원
+                    {{ priceToString(stock.invest_amount) }}원
                   </p>
                 </div>
                 <div class="stock-row2">
                   <p id="stock-share">{{ stock.stock_share }}주</p>
                   <div>
                     <p v-if="stock.earn_rate > 1" class="red" id="earn-amount">
-                      {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+                      {{
+                        priceToString(
+                          (stock.earn_rate / 100) * stock.invest_amount
+                        )
+                      }}원
                     </p>
                     <p v-else class="blue" id="earn-amount">
-                      {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+                      {{
+                        priceToString(
+                          (stock.earn_rate / 100) * stock.invest_amount
+                        )
+                      }}원
                     </p>
                     <p v-if="stock.earn_rate > 1" class="red" id="earn-rate">
                       {{ stock.earn_rate }}%
@@ -243,6 +253,7 @@ import { Pie } from 'vue-chartjs';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
 export default {
   components: {
     Pie,
@@ -308,6 +319,10 @@ export default {
   },
 
   methods: {
+    priceToString(price) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+
     openModal() {
       const modal = document.querySelector('.modal-wrapper');
       const background = document.querySelector('.background');
@@ -354,7 +369,6 @@ export default {
         this.totalEarn = response.data[0].total_earn;
         this.totalInvest = response.data[0].total_invest;
         this.totalRate = response.data[0].total_rate;
-
         this.stocks.sort((a, b) => {
           return (
             (b.earn_rate / 100) * b.invest_amount -
