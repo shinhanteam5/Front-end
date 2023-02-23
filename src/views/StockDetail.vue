@@ -4,7 +4,15 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <router-link id="back-btn" to="/frac/stockList">
+      <router-link v-if="pre_page === 'home'" id="back-btn" to="/frac">
+        <img
+          href=""
+          id="top-bar"
+          src="../assets/components/top-bar.png"
+          alt=""
+        />
+      </router-link>
+      <router-link v-else id="back-btn" to="/frac/stockList">
         <img
           href=""
           id="top-bar"
@@ -118,6 +126,7 @@ export default {
   components: { BarChart, BarChart2, ExpertComment },
   data() {
     return {
+      pre_page: '',
       good: 0,
       bad: 0,
       soso: 0,
@@ -171,6 +180,8 @@ export default {
 
   created() {
     const stock_code = this.$route.query.stock_code;
+    const pre_page = this.$route.query.pre_page;
+    this.pre_page = pre_page;
 
     axios
       .get(`http://34.64.58.230/api/stocklist/${stock_code}`)

@@ -17,7 +17,7 @@
               d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
             />
           </svg>
-          <p>{{filter}}</p>
+          <p>{{ filter }}</p>
         </div>
         <router-link to="/frac/select" id="select-link"
           >필터 변경하기</router-link
@@ -114,7 +114,7 @@ const priceToString = (price) => {
 export default {
   data() {
     return {
-      filter:"",
+      filter: '',
       stockContext: 'high',
       stockList: [],
       stockList2: [],
@@ -138,14 +138,14 @@ export default {
 
           if (crr === '상승') {
             this.stockContext = 'high';
-            this.stockList=this.stockList2
-            this.stockList=this.stockList.filter(item => item.fltRt > 0);
+            this.stockList = this.stockList2;
+            this.stockList = this.stockList.filter((item) => item.fltRt > 0);
             this.stockList.sort((a, b) => {
               return b.fltRt - a.fltRt;
             });
           } else {
-            this.stockList=this.stockList2
-            this.stockList=this.stockList.filter(item => item.fltRt < 0);
+            this.stockList = this.stockList2;
+            this.stockList = this.stockList.filter((item) => item.fltRt < 0);
 
             this.stockContext = 'low';
             this.stockList.sort((a, b) => {
@@ -174,25 +174,24 @@ export default {
   },
 
   async created() {
-
     let url = '';
     let url2 = '';
     const tendency = this.$route.query.filter;
 
     if (tendency == 1) {
-      this.filter="필터 : 공격형";
+      this.filter = '필터 : 공격형';
       url =
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=30&beginFltRt=15';
       url2 =
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=-15&beginFltRt=-30';
     } else if (tendency == 2) {
-      this.filter="필터 : 중립형";
+      this.filter = '필터 : 중립형';
       url =
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=15&beginFltRt=5';
       url2 =
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=-5&beginFltRt=-15';
     } else {
-      this.filter="필터 : 안정형";
+      this.filter = '필터 : 안정형';
       url =
         'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=100&resultType=json&endFltRt=5&beginFltRt=-5';
     }
@@ -211,25 +210,20 @@ export default {
         });
 
         this.stockList2.push({
-            srtnCd: stock.srtnCd,
-            itmsNm: stock.itmsNm,
-            mkp: priceToString(stock.mkp),
-            fltRt: Number(stock.fltRt),
-            trqu: priceToString(stock.trqu),
-            clpr: stock.clpr,
-            vs: stock.vs,
-          });
-
-
+          srtnCd: stock.srtnCd,
+          itmsNm: stock.itmsNm,
+          mkp: priceToString(stock.mkp),
+          fltRt: Number(stock.fltRt),
+          trqu: priceToString(stock.trqu),
+          clpr: stock.clpr,
+          vs: stock.vs,
+        });
 
         this.stockList.sort((a, b) => {
           return b.fltRt - a.fltRt;
         });
-        this.stockList=this.stockList.filter(item => item.fltRt > 0);
+        this.stockList = this.stockList.filter((item) => item.fltRt > 0);
       });
-
-
-
     });
 
     if (tendency != 3) {
@@ -257,11 +251,10 @@ export default {
             vs: stock.vs,
           });
 
-
           this.stockList.sort((a, b) => {
             return b.fltRt - a.fltRt;
           });
-          this.stockList=this.stockList.filter(item => item.fltRt > 0);
+          this.stockList = this.stockList.filter((item) => item.fltRt > 0);
         });
       });
     }

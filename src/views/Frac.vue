@@ -165,6 +165,7 @@
                 name: 'StockDetail',
                 query: {
                   stock_code: stock.stock_code,
+                  pre_page: 'home',
                 },
               }"
             >
