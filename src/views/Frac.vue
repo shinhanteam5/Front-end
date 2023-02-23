@@ -156,34 +156,45 @@
             <button>수익금액순</button>
           </div>
           <ul class="stocks-list">
-            <li id="stock" v-for="stock in stocks">
-              <div class="stock-row1">
-                <p id="stock-name">{{ stock.stock_name }}</p>
-                <p v-if="stock.earn_rate > 1" id="invest-amount" class="red">
-                  {{ stock.invest_amount }}원
-                </p>
-                <p v-else id="invest-amount" class="blue">
-                  {{ stock.invest_amount }}원
-                </p>
-              </div>
-              <div class="stock-row2">
-                <p id="stock-share">{{ stock.stock_share }}주</p>
-                <div>
-                  <p v-if="stock.earn_rate > 1" class="red" id="earn-amount">
-                    {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+            <router-link
+              v-for="stock in stocks"
+              id="stock-li"
+              :to="{
+                name: 'StockDetail',
+                query: {
+                  stock_code: stock.stock_code,
+                },
+              }"
+            >
+              <li id="stock">
+                <div class="stock-row1">
+                  <p id="stock-name">{{ stock.stock_name }}</p>
+                  <p v-if="stock.earn_rate > 1" id="invest-amount" class="red">
+                    {{ stock.invest_amount }}원
                   </p>
-                  <p v-else class="blue" id="earn-amount">
-                    {{ (stock.earn_rate / 100) * stock.invest_amount }}원
-                  </p>
-                  <p v-if="stock.earn_rate > 1" class="red" id="earn-rate">
-                    {{ stock.earn_rate }}%
-                  </p>
-                  <p v-else class="blue" id="earn-rate">
-                    {{ stock.earn_rate }}%
+                  <p v-else id="invest-amount" class="blue">
+                    {{ stock.invest_amount }}원
                   </p>
                 </div>
-              </div>
-            </li>
+                <div class="stock-row2">
+                  <p id="stock-share">{{ stock.stock_share }}주</p>
+                  <div>
+                    <p v-if="stock.earn_rate > 1" class="red" id="earn-amount">
+                      {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+                    </p>
+                    <p v-else class="blue" id="earn-amount">
+                      {{ (stock.earn_rate / 100) * stock.invest_amount }}원
+                    </p>
+                    <p v-if="stock.earn_rate > 1" class="red" id="earn-rate">
+                      {{ stock.earn_rate }}%
+                    </p>
+                    <p v-else class="blue" id="earn-rate">
+                      {{ stock.earn_rate }}%
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </router-link>
           </ul>
         </div>
       </div>

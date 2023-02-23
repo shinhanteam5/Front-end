@@ -246,6 +246,11 @@ div.hasStock {
     }
     ul.stocks-list {
       margin: 14px 0px;
+      #stock-li {
+        text-decoration: none;
+        text-decoration-line: none;
+        color: black;
+      }
       li#stock {
         cursor: pointer;
         margin: 20px 0px;
