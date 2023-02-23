@@ -16,10 +16,10 @@
         <div class="stock-name">
           {{ detail[0].name }}
         </div>
-        <div class="stock-current-price">{{ detail[0].current_price }}원</div>
+        <div class="stock-current-price">{{ currentPrice }}원</div>
         <div class="stock-earn">
           <span v-if="detail[0].earn > 0">+</span>
-          {{ detail[0].earn }}원 ({{ detail[0].earn_rate }}%) 오늘
+          {{ earn }}원 ({{ detail[0].earn_rate }}%) 오늘
         </div>
       </div>
 
@@ -109,6 +109,10 @@ var ctx = document.getElementById('myChart');
 console.log('sd', ctx);
 import axios from 'axios';
 
+const priceToString = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 export default {
   name: 'App',
   components: { BarChart, BarChart2, ExpertComment },
@@ -128,6 +132,8 @@ export default {
         '3년': 'year3',
       },
       barLoad: false,
+      currentPrice: '',
+      earn: '',
     };
   },
 
@@ -172,6 +178,9 @@ export default {
         this.detail = response.data;
         this.imgurl = response.data[0].week;
         this.barLoad = true;
+
+        this.currentPrice = priceToString(this.detail[0].current_price);
+        this.earn = priceToString(Math.floor(this.detail[0].earn));
       });
 
     axios
