@@ -26,7 +26,14 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <router-link id="back-btn" to="/frac/select">
+        <img
+          href=""
+          id="top-bar"
+          src="../assets/components/top-bar.png"
+          alt=""
+        />
+      </router-link>
       <!-- 리스트 기준 -->
       <section class="category">
         <ul class="chart-tab" ref="tab" @click.prevent="setContext">

@@ -10,6 +10,13 @@ div.img-wrapper {
       filter: brightness(0.3);
       overflow: hidden;
     }
+    #back-btn {
+      width: 100%;
+      img#top-bar {
+        cursor: pointer;
+        width: 100%;
+      }
+    }
     div#bottom-bar {
       position: fixed;
       width: 424px;
@@ -30,7 +37,7 @@ div.img-wrapper {
     button#btn1-to-invest {
       cursor: pointer;
       position: absolute;
-      top: 7.6%;
+      top: 8.6%;
       right: 26%;
       font-family: $noto-sans;
       border: none;
@@ -192,6 +199,7 @@ div.hasStock {
     }
   }
   div.portfolio-box {
+    cursor: pointer;
     background-color: $light-purple;
     color: black;
     border-radius: 10px;

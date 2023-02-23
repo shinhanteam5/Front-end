@@ -4,7 +4,14 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <img href="" id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <router-link id="back-btn" to="/">
+        <img
+          href=""
+          id="top-bar"
+          src="../assets/components/top-bar-not-have-btn.png"
+          alt=""
+        />
+      </router-link>
       <button @click="openModal()" id="btn1-to-invest">투자하기</button>
       <img
         id="top-menu-1"

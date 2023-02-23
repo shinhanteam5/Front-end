@@ -4,7 +4,14 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <img id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <router-link id="back-btn" to="/frac">
+        <img
+          href=""
+          id="top-bar"
+          src="../assets/components/top-bar.png"
+          alt=""
+        />
+      </router-link>
       <div class="selection-wrapper">
         <h1>희망하는 <span>투자 성향</span>을 선택하세요</h1>
         <router-link
