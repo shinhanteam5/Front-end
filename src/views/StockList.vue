@@ -87,6 +87,7 @@
               name: 'StockDetail',
               query: {
                 stock_code: stock.srtnCd,
+                filter: this.filterNumber,
               },
             }"
             v-for="(stock, index) in stockList"
