@@ -167,24 +167,29 @@ export default {
   },
 
   async created() {
-    var url = '';
+    let url = '';
+    let url2 = '';
     const tendency = this.$route.query.filter;
-    console.log(tendency);
+
     if (tendency == 1) {
       url =
-        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=10&resultType=json&endFltRt=30&beginFltRt=15';
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=30&beginFltRt=15';
+      url2 =
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=-15&beginFltRt=-30';
     } else if (tendency == 2) {
       url =
-        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=100&resultType=json&endFltRt=15&beginFltRt=5';
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=15&beginFltRt=5';
+      url2 =
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=-5&beginFltRt=-15';
     } else {
       url =
-        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=100&resultType=json&endFltRt=5&beginFltRt=-5';
+        'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=DIlWQ5yy%2BbSIwrzWGOAXjybTToyaT4bkcMf9lUR%2FU6BNxri4WtaLREqWIGmmIT8LjlP5LeB2U9U3ZbTkofQQGw%3D%3D&numOfRows=50&resultType=json&endFltRt=5&beginFltRt=-5';
     }
+
     await axios.get(url).then((response) => {
-      var final = [];
       const stockList = response.data.response.body.items.item;
       stockList.forEach((stock) => {
-        final.push({
+        this.stockList.push({
           srtnCd: stock.srtnCd,
           itmsNm: stock.itmsNm,
           mkp: priceToString(stock.mkp),
@@ -194,19 +199,36 @@ export default {
           vs: stock.vs,
         });
 
-        final.sort((a, b) => {
+        this.stockList.sort((a, b) => {
           return b.fltRt - a.fltRt;
         });
-
-        this.stockList = final;
       });
-      // console.log("heel",this.stocklist)
-      // this.stockList.sort((a, b) =>{
-      // b.fltRt - a.fltRt
-      // })
-      const loading = document.querySelector('.loading-wrapper');
-      loading.classList.add('not-show');
     });
+
+    if (tendency != 3) {
+      await axios.get(url2).then((response) => {
+        const stockList = response.data.response.body.items.item;
+        console.log(stockList);
+        stockList.forEach((stock) => {
+          this.stockList.push({
+            srtnCd: stock.srtnCd,
+            itmsNm: stock.itmsNm,
+            mkp: priceToString(stock.mkp),
+            fltRt: Number(stock.fltRt),
+            trqu: priceToString(stock.trqu),
+            clpr: stock.clpr,
+            vs: stock.vs,
+          });
+
+          this.stockList.sort((a, b) => {
+            return b.fltRt - a.fltRt;
+          });
+        });
+      });
+    }
+
+    const loading = document.querySelector('.loading-wrapper');
+    loading.classList.add('not-show');
   },
 };
 </script>
