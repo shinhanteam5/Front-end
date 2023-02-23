@@ -117,6 +117,7 @@ export default {
       filter:"",
       stockContext: 'high',
       stockList: [],
+      stockList2: [],
     };
   },
 
@@ -137,10 +138,15 @@ export default {
 
           if (crr === '상승') {
             this.stockContext = 'high';
+            this.stockList=this.stockList2
+            this.stockList=this.stockList.filter(item => item.fltRt > 0);
             this.stockList.sort((a, b) => {
               return b.fltRt - a.fltRt;
             });
           } else {
+            this.stockList=this.stockList2
+            this.stockList=this.stockList.filter(item => item.fltRt < 0);
+
             this.stockContext = 'low';
             this.stockList.sort((a, b) => {
               return a.fltRt - b.fltRt;
@@ -204,10 +210,26 @@ export default {
           vs: stock.vs,
         });
 
+        this.stockList2.push({
+            srtnCd: stock.srtnCd,
+            itmsNm: stock.itmsNm,
+            mkp: priceToString(stock.mkp),
+            fltRt: Number(stock.fltRt),
+            trqu: priceToString(stock.trqu),
+            clpr: stock.clpr,
+            vs: stock.vs,
+          });
+
+
+
         this.stockList.sort((a, b) => {
           return b.fltRt - a.fltRt;
         });
+        this.stockList=this.stockList.filter(item => item.fltRt > 0);
       });
+
+
+
     });
 
     if (tendency != 3) {
@@ -225,9 +247,21 @@ export default {
             vs: stock.vs,
           });
 
+          this.stockList2.push({
+            srtnCd: stock.srtnCd,
+            itmsNm: stock.itmsNm,
+            mkp: priceToString(stock.mkp),
+            fltRt: Number(stock.fltRt),
+            trqu: priceToString(stock.trqu),
+            clpr: stock.clpr,
+            vs: stock.vs,
+          });
+
+
           this.stockList.sort((a, b) => {
             return b.fltRt - a.fltRt;
           });
+          this.stockList=this.stockList.filter(item => item.fltRt > 0);
         });
       });
     }
