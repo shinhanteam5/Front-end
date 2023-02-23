@@ -4,7 +4,15 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <router-link id="back-btn" to="/frac/stockdetail">
+      <router-link
+        id="back-btn"
+        :to="{
+          name: 'StockDetail',
+          query: {
+            stock_code: stockCode,
+          },
+        }"
+      >
         <img
           href=""
           id="top-bar"
@@ -169,6 +177,7 @@ const priceToString = (price) => {
 export default {
   data() {
     return {
+      stockCode: 0,
       inputMoney: 0,
       shownMoney: '',
       balance: 1000000, // 잔액
@@ -284,6 +293,8 @@ export default {
     const { name, user_id, stock_code, current_price } = this.$route.query;
     this.makeFormData(name, stock_code);
     this.currnetPrice = current_price;
+
+    this.stockCode = stock_code;
 
     this.shownBalance = priceToString(this.balance) + '원';
   },
