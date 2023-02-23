@@ -217,6 +217,12 @@ export default {
       this.frm.append('earn_rate', Number(0));
     },
 
+    checkValidation() {
+      if (this.balance <= 0) {
+        this.openModal2();
+      }
+    },
+
     updateCharge() {
       this.charge = (this.inputMoney * 0.01).toFixed(2);
       this.shownCharge = String(this.charge) + '원';
