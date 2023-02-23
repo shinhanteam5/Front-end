@@ -157,13 +157,14 @@
         <img src="../assets/characters/character3.png" alt="" />
       </div>
       <div class="modal-row2">
-        <p class="bold">매수 완료</p>
-        <p>정상적으로 매수 완료되었습니다.</p>
+        <p class="bold">{{modaltitle}}</p>
+        <p>{{modalText}}</p>
       </div>
       <div class="modal-btn">
         <router-link class="link-btn" to="/frac">완료</router-link>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -188,6 +189,8 @@ export default {
       shownShareNumber: '-',
       currnetPrice: 0,
       frm: new FormData(),
+      modalText:"",
+      modaltitle:""
     };
   },
 
@@ -196,7 +199,15 @@ export default {
       if (this.inputMoney === 0) {
         return;
       }
-
+  
+      if (this.shownBalance[0]=="-" || this.shownBalance[0]=="0") {
+        this.modaltitle="매수 실패"
+        this.modalText = "잔액이 부족합니다."
+        this.openModal();
+        return;
+      }
+      this.modaltitle="매수 완료"
+      this.modalText = "정상적으로 매수 완료되었습니다."
       this.frm.append('invest_amount', Number(this.inputMoney));
       this.frm.append('stock_share', Number(this.shareNumber));
 
@@ -293,6 +304,8 @@ export default {
       modal.classList.remove('show');
       background.classList.remove('be-darker');
     },
+
+
   },
 
   created() {
