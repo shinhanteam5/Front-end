@@ -229,6 +229,7 @@
 import axios from 'axios';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'vue-chartjs';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default {
@@ -257,6 +258,37 @@ export default {
         plugins: {
           datalabels: {
             display: true,
+            backgroundColor: function (context) {
+              return context.dataset.backgroundColor;
+            },
+            borderColor: 'white',
+            borderRadius: 30,
+            borderWidth: 2,
+            color: function (context) {
+              return context.hovered ? 'black' : '#6e6d6d';
+            },
+            font: {
+              weight: 'normal',
+            },
+            listeners: {
+              enter: function (context) {
+                context.hovered = true;
+                return true;
+              },
+              leave: function (context) {
+                context.hovered = false;
+                return true;
+              },
+            },
+            formatter: function (value, context) {
+              let sum = 0;
+              let valueArr = this.doughnutChart.datasets[0].data;
+              for (var i in valueArr) {
+                sum += parseInt(valueArr[i]);
+              }
+              let percentage = ((value * 100) / sum).toFixed(2) + '%';
+              return percentage;
+            }.bind(this),
           },
         },
       },
