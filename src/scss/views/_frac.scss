@@ -186,12 +186,12 @@ div.hasStock {
     }
     .img-wrapper2 {
       img {
+        cursor: pointer;
         width: 94px;
       }
     }
   }
   div.portfolio-box {
-    cursor: pointer;
     background-color: $light-purple;
     color: black;
     border-radius: 10px;

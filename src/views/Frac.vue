@@ -58,7 +58,10 @@
             <Pie :data="data" :options="options" id="pie-chart" />
           </div>
           <div class="img-wrapper2">
-            <img src="../assets/characters/character4.png" />
+            <img
+              @click="notShowPortfolio()"
+              src="../assets/characters/character7.png"
+            />
           </div>
         </div>
         <div @click="showPortfolio()" class="portfolio-box" id="box1">
@@ -66,7 +69,6 @@
         </div>
         <div
           v-if="totalInvest > 1000 && totalInvest < 3000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -75,7 +77,6 @@
         </div>
         <div
           v-else-if="totalInvest >= 3000 && totalInvest <= 5000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -84,7 +85,6 @@
         </div>
         <div
           v-else-if="totalInvest > 5000 && totalInvest < 14000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -93,7 +93,6 @@
         </div>
         <div
           v-else-if="totalInvest > 14000 && totalInvest <= 25000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -102,7 +101,6 @@
         </div>
         <div
           v-else-if="totalInvest > 25000 && totalInvest <= 50000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -111,7 +109,6 @@
         </div>
         <div
           v-else-if="totalInvest > 50000 && totalInvest <= 100000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -120,7 +117,6 @@
         </div>
         <div
           v-else-if="totalInvest > 100000 && totalInvest <= 300000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -129,7 +125,6 @@
         </div>
         <div
           v-else-if="totalInvest > 300000 && totalInvest <= 500000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
@@ -138,19 +133,13 @@
         </div>
         <div
           v-else-if="totalInvest > 500000 && totalInvest <= 700000"
-          @click="notShowPortfolio()"
           class="portfolio-box not-show"
           id="box2"
         >
           <img src="../assets/steakers/allowance.png" />
           <p>한 달 용돈만큼 투자했어요</p>
         </div>
-        <div
-          v-else
-          @click="notShowPortfolio()"
-          class="portfolio-box not-show"
-          id="box2"
-        >
+        <div v-else class="portfolio-box not-show" id="box2">
           <img src="../assets/steakers/travel.png" />
           <p>여행 경비만큼 투자했어요</p>
         </div>
