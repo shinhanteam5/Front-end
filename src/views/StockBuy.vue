@@ -201,7 +201,7 @@ export default {
       this.frm.append('stock_share', Number(this.shareNumber));
 
       axios
-        .post('http://127.0.0.1:8000/api/stocklist/buy', this.frm)
+        .post('http://34.64.58.230/api/stocklist/buy', this.frm)
         .then((response) => {
           console.log(response.data);
         })

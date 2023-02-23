@@ -362,7 +362,7 @@ export default {
     frm.append('user_id', userId);
 
     await axios
-      .get(`http://127.0.0.1:8000/api/portfolio/${userId}`, frm)
+      .get(`http://34.64.58.230/api/portfolio/${userId}`, frm)
       .then((response) => {
         console.log(response.data[0].stocks);
         this.stocks = response.data[0].stocks; // 보유 주식
