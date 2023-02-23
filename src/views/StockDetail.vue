@@ -167,7 +167,7 @@ export default {
     const stock_code = this.$route.query.stock_code;
 
     axios
-      .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}`)
+      .get(`http://34.64.58.230/api/stocklist/${stock_code}`)
       .then((response) => {
         this.detail = response.data;
         this.imgurl = response.data[0].week;
@@ -175,7 +175,7 @@ export default {
       });
 
     axios
-      .get(`http://127.0.0.1:8000/api/stocklist/${stock_code}/news`)
+      .get(`http://34.64.58.230/api/stocklist/${stock_code}/news`)
       .then((response) => {
         response.data.forEach((item) => {
           let time = item.tstamp;

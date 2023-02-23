@@ -158,7 +158,7 @@ export default {
       frm.append('itmsNm', this.stockList[index].itmsNm);
 
       axios
-        .post(`http://127.0.0.1:8000/api/stocklist/submit/${stock_code}`, frm)
+        .post(`http://34.64.58.230/api/stocklist/submit/${stock_code}`, frm)
         .then((response) => {
           console.log(response.data);
         })
