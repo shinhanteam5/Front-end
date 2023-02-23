@@ -4,7 +4,7 @@
       <div id="bottom-bar">
         <img src="../assets/components/bottom-bar.jpg" alt="" />
       </div>
-      <img href='' id="top-bar" src="../assets/components/top-bar.png" alt="" />
+      <img href="" id="top-bar" src="../assets/components/top-bar.png" alt="" />
       <button @click="openModal()" id="btn1-to-invest">투자하기</button>
       <img
         id="top-menu-1"
@@ -316,9 +316,12 @@ export default {
         this.totalInvest = response.data[0].total_invest;
         this.totalRate = response.data[0].total_rate;
 
-        this.stocks.sort((a, b) =>{ 
-         return b.earn_rate - a.earn_rate
-  })
+        this.stocks.sort((a, b) => {
+          return (
+            (b.earn_rate / 100) * b.invest_amount -
+            (a.earn_rate / 100) * a.invest_amount
+          );
+        });
       })
       .catch((error) => console.log(error));
 
@@ -340,8 +343,6 @@ export default {
       this.data.datasets[0].data.push(stock.invest_amount);
       this.data.datasets[0].backgroundColor.push(colors[index]);
     });
-
-    
   },
 };
 </script>
