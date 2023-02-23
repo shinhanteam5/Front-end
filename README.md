@@ -41,10 +41,6 @@ $ python manage.py runserver
 
 # Stacks
 
-### Backend
-
-Django Restframework
-
 ### Frontend
 
 VueJS
@@ -53,6 +49,8 @@ SCSS
 HTML
 
 ### Backend
+
+Django Restframework
 
 # Team Members
 
